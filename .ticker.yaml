@@ -1,0 +1,21 @@
+interval: 300
+show-summary: false
+show-tags: true
+show-fundamentals: true
+show-separator: true
+show-holdings: true
+interval: 60
+currency: USD
+currency-summary-only: false
+watchlist:
+  - GME
+  - SPY
+  # - ^NDX
+  - AMC
+  # - BBBY
+lots:
+  - symbol: "GME"
+    quantity: 322
+    unit_cost: 127
+colors:
+  text: "#ffffff"
