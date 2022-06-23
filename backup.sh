@@ -16,6 +16,8 @@ cp --parents -r /etc/X11/xorg.conf.d/ $HOME/qtilebackup
 #cp -p -r ~/config-alacritty $HOME/dotfiles
 cp -p -r ~/.config/{alacritty,bottom,cmus,dunst,fcitx5,feh,'gtk-2.0','gtk-3.0',mpv,picom,qtile,ranger} $HOME/qtilebackup/.config
 
+cp -r ~/.fonts/ $HOME/qtilebackup/.fonts
+
 cp /etc/{environment,pacman.conf} $HOME/qtilebackup/etc/
 
 # copy other dot files

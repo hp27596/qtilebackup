@@ -605,7 +605,7 @@ def assign_app_group(client):
     d["4"] = []
     d["5"] = ["Steam"]
     d["6"] = ["tmux", ]
-    d["7"] = ["thunar", "bottom", "ranger"]
+    d["7"] = ["thunar", "bottom"]
     d["8"] = ["telegram-desktop"]
     d["9"] = ["crx_agimnkijcaahngcdmfeangaknmldooml"]
     d["0"] = []
