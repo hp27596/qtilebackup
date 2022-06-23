@@ -511,6 +511,7 @@ def init_widgets_list():
                     padding = 2,
                     foreground = alttext,
                     background = altcolor,
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh")},
                     format="%y %b %d | %H:%M"),
 
                 widget.TextBox(
