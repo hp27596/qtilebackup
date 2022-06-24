@@ -23,7 +23,7 @@ sudo cp extras/pfetch /usr/bin/pfetch
 rsync -av --progress ./.config/ $HOME/.config --exclude .git
 
 # Install essential packages
-yay -S emacs zsh intel-media-driver intel-gpu-tools va-utils thunar sshfs picom dmenu sway-launcher-desktop xorg-xinput brightnessctl alsa-utils seahorse polkit-gnome gnome-keyring bluez bluez-tools bluez-utils speedtest-cli lxappearance-gtk3 material-black-colors-theme dunst perl playerctl pnmixer xautolock cmake fzf feh cmus gnome-disk-utility python-pip python iw net-tools htop mpv tk ctags nodejs npm xclip xsel yarn firewalld picom
+yay -S emacs zsh intel-media-driver intel-gpu-tools va-utils thunar sshfs picom dmenu sway-launcher-desktop xorg-xinput brightnessctl alsa-utils seahorse polkit-gnome gnome-keyring bluez bluez-tools bluez-utils speedtest-cli lxappearance-gtk3 material-black-colors-theme dunst perl playerctl pnmixer xautolock cmake fzf feh cmus gnome-disk-utility python-pip python iw net-tools htop mpv tk ctags nodejs npm xclip xsel yarn firewalld picom pacman-contrib
 
 # Install pulseaudio or pipewire. My gpd pocket 2 somehow randomly only works with either one on different distros.
 # pipewire
@@ -32,7 +32,7 @@ yay -S emacs zsh intel-media-driver intel-gpu-tools va-utils thunar sshfs picom 
 # systemctl --user enable pipewire pipewire.socket
 
 # pulseaudio
-yay -S pulseaudio-bluetooth pulseaudio pulseaudio-alsa pulseaudio-ctl lib32-libpulse
+yay -S pulseaudio-bluetooth pulseaudio pulseaudio-alsa pulseaudio-ctl lib32-libpulse pulseaudio-qt
 systemctl --user --daemon-reload
 systemctl --user enable pulseaudio pulseaudio.socket
 

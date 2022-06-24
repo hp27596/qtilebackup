@@ -51,6 +51,7 @@ keys = [
     Key([mod], "b", lazy.spawn(myTerm + ' --class bottom,bottom -e btm --battery')),
     Key([mod], "r", lazy.spawn(myTerm + " --class sway-launcher,sway-launcher -e sway-launcher-desktop")),
     Key([mod], "u", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh")), #fixes nmtui resizing issue
+    Key([mod], "y", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh")),
 
 # SUPER + SHIFT KEYS
 

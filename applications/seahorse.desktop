@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Seahorse
+Comment=Gnome GUI Keyring Manager
+Exec=seahorse
+Icon=
+Terminal=false
+Type=Application
