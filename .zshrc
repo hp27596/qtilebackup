@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/hp/.oh-my-zsh"
 export VISUAL=emacs
-export EDITOR=vim
+export EDITOR=nvim
 export PATH="$HOME/.emacs.d/bin:$HOME/.local/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -116,7 +116,7 @@ alias sudo='sudo ' #use aliases with sudo
 alias joplind='joplin --profile ~/.config/joplin-desktop/'
 alias la='ls -a'
 alias xrandrbr='xrandr --output eDP1 --brightness'
-alias nv='nvim "+NERDTreeTabsToggle" "+NERDTreeFocusToggle"'
+alias vim='nvim'
 alias cls='clear'
 alias feh='feh --auto-zoom'
 alias emacs="emacsclient -c -a 'emacs'"
