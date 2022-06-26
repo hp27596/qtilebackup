@@ -65,8 +65,6 @@ keys = [
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
     Key(["mod1", "control"], "l", lazy.spawn('betterlockscreen -l')),
 
-# ALT + ... KEYS
-
 # CONTROL + SHIFT KEYS
 
     Key([mod2, "shift"], "Escape", lazy.spawn(myTerm + ' -e htop')),
@@ -84,12 +82,12 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%- "), lazy.spawn(home + "/.config/qtile/scripts/currentbrightness.sh")),
 
 # INCREASE/DECREASE/MUTE VOLUME
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle"), lazy.spawn("notify-send -t 2000 'Mute Toggled'")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse set Master 5%-"), lazy.spawn("notify-send -t 2000 'Volume -5%'")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse set Master 5%+"), lazy.spawn("notify-send -t 2000 'Volume +5%'")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse set Master 5%-"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse set Master 5%+"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
 
-    Key([mod], "F11", lazy.spawn("amixer -D pulse set Master 5%-"), lazy.spawn("notify-send -t 2000 'Volume -5%'")),
-    Key([mod], "F12", lazy.spawn("amixer -D pulse set Master 5%+"), lazy.spawn("notify-send -t 2000 'Volume +5%'")),
+    Key([mod], "F11", lazy.spawn("amixer -D pulse set Master 5%-"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
+    Key([mod], "F12", lazy.spawn("amixer -D pulse set Master 5%+"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
 
     Key([mod], "F9", lazy.spawn("playerctl play-pause")),
     Key([mod], "F10", lazy.spawn("playerctl next")),
@@ -113,7 +111,6 @@ keys = [
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "h", lazy.layout.left()),
     Key([mod], "l", lazy.layout.right()),
-
 
 # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, "control"], "l",
@@ -161,7 +158,6 @@ keys = [
         lazy.layout.increase_nmaster(),
         ),
 
-
 # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip()),
 
@@ -177,7 +173,7 @@ keys = [
     Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
 
-         ### Treetab controls
+### Treetab controls
     Key([mod, "control"], "k",
         lazy.layout.section_up(),
         desc='Move up a section in treetab'
@@ -187,7 +183,6 @@ keys = [
         desc='Move down a section in treetab'
         ),
 
-
 # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
@@ -195,14 +190,13 @@ keys = [
     Key([mod, "shift"], "Right", lazy.layout.swap_right()),
 
 # TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()),]
+    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
+
+]
 
 groups = []
-
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
-
 group_labels = ["", "", "", "", "", "", "", "", "", ""]
-
 group_layouts = ["monadtall", "max", "max", "max", "max", "max", "max", "max", "max", "floating",]
 
 for i in range(len(group_names)):
@@ -245,7 +239,7 @@ layouts = [
     layout.MonadTall(margin=8, border_width=2, border_focus="#e06c75", border_normal="#212121"),
     layout.MonadWide(margin=8, border_width=2, border_focus="#e06c75", border_normal="#212121"),
     # layout.Matrix(**layout_theme),
-    # layout.Bsp(**layout_theme),
+    layout.Bsp(**layout_theme),
     # layout.RatioTile(**layout_theme),
     # layout.Spiral(**layout_theme),
     # layout.Columns(**layout_theme),
@@ -266,8 +260,6 @@ layouts = [
 ]
 
 # COLORS FOR THE BAR
-
-
 def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
             ["#2F343F", "#2F343F"], # color 1
@@ -372,25 +364,6 @@ def init_widgets_list():
                         padding = 0,
                         scale = 0.7),
 
-                # widget.TextBox(
-                #        text = '',
-                #        font = "Ubuntu Mono",
-                #        background = colors[14],
-                #        foreground = colors[12],
-                #        padding = 0,
-                #        fontsize = 90),
-
-                # widget.Backlight(
-                #     max_brightness_file = '/sys/class/backlight/intel_backlight/max_brightness',
-                #     brightness_file = '/sys/class/backlight/intel_backlight/brightness',
-                #     format = 'BL {percent:}',
-                #     font = "Ubuntu Mono",
-                #     fontsize = deffontsize,
-                #     padding = 2,
-                #     foreground = colors[5],
-                #     background = colors[12]),
-
-
                 widget.TextBox(
                        text = '',
                        font = "Ubuntu Mono",
@@ -407,43 +380,6 @@ def init_widgets_list():
                     foreground = alttext,
                     tag_sensor = "Core 0",
                     update_interval = 5),
-
-               # widget.TextBox(
-               #         text = '',
-               #         font = "Ubuntu Mono",
-               #         background = altcolor,
-               #         foreground = colors[12],
-               #         padding = 0,
-               #         fontsize = 90),
-
-               #  widget.CPU(
-               #      format = '{load_percent}%',
-               #      font = "Ubuntu Mono",
-               #      fontsize = deffontsize,
-               #      padding = 2,
-               #      foreground = colors[5],
-               #      background = colors[12],
-               #      update_interval = 5,
-               #      mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')}),
-
-               #  widget.TextBox(
-               #         text = '',
-               #         font = "Ubuntu Mono",
-               #         background = colors[12],
-               #         foreground = altcolor,
-               #         padding = 0,
-               #         fontsize = 90),
-
-               #  widget.Memory(
-               #      font = "Ubuntu Mono",
-               #      fontsize = deffontsize,
-               #      padding = 2,
-               #      foreground = alttext,
-               #      background = altcolor,
-               #      measure_mem = 'G',
-               #      format = '{MemUsed: .1f}G',
-               #      update_interval = 5,
-               #      mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e btm --battery')}),
 
                 widget.TextBox(
                        text = '',
@@ -623,8 +559,6 @@ def assign_app_group(client):
 # END
 # ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
 
-
-
 main = None
 
 @hook.subscribe.startup_once
@@ -685,4 +619,4 @@ auto_fullscreen = True
 
 focus_on_window_activation = "focus" # or smart
 
-wmname = "Qtile"
+wmname = "Qtile" # LG3D if Java applications return errors
