@@ -6,6 +6,7 @@ export ZSH="/home/hp/.oh-my-zsh"
 export VISUAL=emacs
 export EDITOR=nvim
 export PATH="$HOME/.emacs.d/bin:$HOME/.local/bin:$PATH"
+export HISTCONTROL=ignoredups:erasedups
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -107,7 +108,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Lines configured by zsh-newuser-install
 
-HISTCONTROL=ignoredups:erasedups
 HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
