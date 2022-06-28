@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 from config import keys
 
+#sort keybinds by modifiers
 keys.sort(key=lambda x: x.modifiers)
+
 clnlist = {}
 
+#clean up the list
 for i in keys:
     if 'XF86' in i.key:
         continue
@@ -23,13 +26,47 @@ for i in keys:
 
         if i.key == 'space':
             i.key = 'Space'
-            pass
         else:
             pass
 
         keybind = keybind + i.key
-        clnlist.update( {keybind : i.desc} )
+        clnlist.update({keybind:i.desc})
 
+genbind = {}
+navbind1 = {}
+navbind2 = {}
+wsbind = {}
+
+navkey = ['Up', 'Down', 'Left', 'Right', ' h', ' j', ' k', ' l']
+
+def has_numbers(inputString):
+    return any(char.isdigit() for char in inputString)
 
 for key, desc in clnlist.items():
+    if 'Workspace' in desc:
+        wsbind.update({key:desc})
+    elif any(nav in key for nav in navkey) and ('Meta' in key):
+        navbind1.update({key:desc})
+    elif any(x in desc for x in ['Window', 'Layout']):
+        navbind2.update({key:desc})
+    else:
+        genbind.update({key:desc})
+
+print('Workspace Keybinds')
+print('----------------')
+for key, desc in wsbind.items():
+    print(key, '=', desc)
+
+print('\nNavigation Keybinds')
+print('----------------')
+for key, desc in navbind1.items():
+    print(key, '=', desc)
+
+print('----------------')
+for key, desc in navbind2.items():
+    print(key, '=', desc)
+
+print('\nGeneral Keybinds')
+print('----------------')
+for key, desc in genbind.items():
     print(key, '=', desc)

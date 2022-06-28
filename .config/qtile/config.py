@@ -51,7 +51,7 @@ keys = [
     Key([mod], "b", lazy.spawn(myTerm + ' --class bottom,bottom -e btm --battery'), desc='Launch Bottom'),
     Key([mod], "r", lazy.spawn(myTerm + " --class sway-launcher,sway-launcher -e sway-launcher-desktop"), desc='Open App Launcher TUI'),
     Key([mod], "u", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh"), desc='Connect to Wifi'), #fixes nmtui resizing issue
-    Key([mod], "y", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh"), desc='Run Welcome Script'),
+    Key([mod], "y", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh"), desc='Run Greetings Script'),
 
 # SUPER + SHIFT KEYS
 
@@ -86,12 +86,12 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse set Master 5%-"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse set Master 5%+"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
 
-    Key([mod], "F11", lazy.spawn("amixer -D pulse set Master 5%-"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh"), desc='Volume Down'),
-    Key([mod], "F12", lazy.spawn("amixer -D pulse set Master 5%+"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh"), desc='Volume Up'),
-
+    Key([mod], "F8", lazy.spawn("playerctl previous"), desc='Play Previous'),
     Key([mod], "F9", lazy.spawn("playerctl play-pause"), desc='Toggle Playback  '),
     Key([mod], "F10", lazy.spawn("playerctl next"), desc='Play Next'),
-    Key([mod], "F8", lazy.spawn("playerctl previous"), desc='Play Previous'),
+
+    Key([mod], "F11", lazy.spawn("amixer -D pulse set Master 5%-"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh"), desc='Volume Down'),
+    Key([mod], "F12", lazy.spawn("amixer -D pulse set Master 5%+"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh"), desc='Volume Up'),
 
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
@@ -164,8 +164,8 @@ keys = [
 # FLIP LAYOUT FOR BSP
     Key([mod, "mod1"], "k", lazy.layout.flip_up(), desc='Flip Layout Up'),
     Key([mod, "mod1"], "j", lazy.layout.flip_down(), desc='Flip Layout Down'),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right(), desc='Flip Layout Right'),
     Key([mod, "mod1"], "h", lazy.layout.flip_left(), desc='Flip Layout Left'),
+    Key([mod, "mod1"], "l", lazy.layout.flip_right(), desc='Flip Layout Right'),
 
 # MOVE WINDOWS UP OR DOWN BSP LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc='Move Window Up'),
@@ -190,7 +190,7 @@ keys = [
     Key([mod, "shift"], "Right", lazy.layout.swap_right(), desc='Move Window Right'),
 
 # TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle Floating'),
+    Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle Window Floating'),
 
 # Change group
     Key([mod], "Tab", lazy.screen.next_group(), desc='Next Workspace'),
@@ -334,7 +334,7 @@ def init_widgets_list():
                     disable_drag=True),
 
                 widget.TaskList(
-                    highlight_method = 'block', # or block
+                    highlight_method = 'block', # or border
                     font='Ubuntu Mono',
                     icon_size=22,
                     max_title_width=300,
@@ -343,7 +343,8 @@ def init_widgets_list():
                     padding_y=10,
                     margin_y=0,
                     fontsize=24,
-                    border=colors[12],
+                    border=maincolor,
+                    unfocused_border=colors[13],
                     foreground=colors[5],
                     margin=0,
                     txt_floating='🗗',
