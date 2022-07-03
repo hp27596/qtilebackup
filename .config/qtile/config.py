@@ -52,6 +52,7 @@ keys = [
     Key([mod], "r", lazy.spawn(myTerm + " --class sway-launcher,sway-launcher -e sway-launcher-desktop"), desc='Open App Launcher TUI'),
     Key([mod], "u", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh"), desc='Connect to Wifi'), #fixes nmtui resizing issue
     Key([mod], "y", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh"), desc='Run Greetings Script'),
+    Key([mod], "slash", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/exportkeys.sh"), desc='View available keybinds'),
 
 # SUPER + SHIFT KEYS
 
@@ -195,8 +196,9 @@ keys = [
 # Change group
     Key([mod], "Tab", lazy.screen.next_group(), desc='Next Workspace'),
     Key([mod, "shift" ], "Tab", lazy.screen.prev_group(), desc='Previous Workspace'),
-    # Key(["mod1"], "Tab", lazy.screen.next_group()),
-    # Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
+    Key(["mod1"], "Tab", lazy.group.next_window()),
+        # lazy.window.bring_to_front()),
+    Key(["mod1", "shift"], "Tab", lazy.group.prev_window()),
 
 ]
 #ENDKEYS
@@ -318,12 +320,10 @@ def init_widgets_list():
                     **base(bg=colors[14]),
                     font='Ubuntu Mono',
                     fontsize = 22,
-                    padding_y = 3,
                     padding_x = 3,
-                    borderwidth = 3,
+                    padding_y = 9,
                     active=colors[5],
                     inactive=colors[2],
-                    rounded= True,
                     highlight_method='block',
                     urgent_alert_method='block',
                     urgent_border=colors[9],
@@ -353,27 +353,27 @@ def init_widgets_list():
                     background=basecolor),
 
                 widget.TextBox(
-                       text = '',
-                       font = "Ubuntu Mono",
-                       background = colors[14],
-                       foreground = colors[12],
-                       padding = 0,
-                       fontsize = 90),
+                    text = '',
+                    font = "Ubuntu Mono",
+                    background = colors[14],
+                    foreground = colors[12],
+                    padding = 0,
+                    fontsize = 90),
 
                 widget.CurrentLayoutIcon(
-                        custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-                        foreground = colors[5],
-                        background = maincolor,
-                        padding = 0,
-                        scale = 0.7),
+                    custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                    foreground = colors[5],
+                    background = maincolor,
+                    padding = 0,
+                    scale = 0.7),
 
                 widget.TextBox(
-                       text = '',
-                       font = "Ubuntu Mono",
-                       background = colors[12],
-                       foreground = altcolor,
-                       padding = 0,
-                       fontsize = 90),
+                    text = '',
+                    font = "Ubuntu Mono",
+                    background = colors[12],
+                    foreground = altcolor,
+                    padding = 0,
+                    fontsize = 90),
 
                 widget.ThermalSensor(
                     font = "Ubuntu Mono",
@@ -385,29 +385,35 @@ def init_widgets_list():
                     update_interval = 5),
 
                 widget.TextBox(
-                       text = '',
-                       font = "Ubuntu Mono",
-                       background = altcolor,
-                       foreground = colors[12],
-                       padding = 0,
-                       fontsize = 90),
+                    text = '',
+                    font = "Ubuntu Mono",
+                    background = altcolor,
+                    foreground = colors[12],
+                    padding = 0,
+                    fontsize = 90),
 
                 widget.Battery(
-                    format = 'BAT {char} {percent:2.0%}',
+                    format = ' {char} {percent:2.0%}',
                     update_interval = 2,
+                    charge_char = '',
+                    discharge_char = '',
+                    full_char = '=',
                     font = "Ubuntu Mono",
                     fontsize = deffontsize,
                     padding = 2,
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},
+                    notify_below = 0.15,
                     foreground = colors[5],
                     background = colors[12]),
 
+
                 widget.TextBox(
-                       text = '',
-                       font = "Ubuntu Mono",
-                       background = colors[12],
-                       foreground = altcolor,
-                       padding = 0,
-                       fontsize = 90),
+                    text = '',
+                    font = "Ubuntu Mono",
+                    background = colors[12],
+                    foreground = altcolor,
+                    padding = 0,
+                    fontsize = 90),
 
                 widget.Wlan(
                     format = '{percent:2.0%} {essid}',
@@ -422,28 +428,28 @@ def init_widgets_list():
                     update_interval = 5),
 
                 widget.TextBox(
-                       text = '',
-                       font = "Ubuntu Mono",
-                       background = altcolor,
-                       foreground = colors[12],
-                       padding = 0,
-                       fontsize = 90),
+                    text = '',
+                    font = "Ubuntu Mono",
+                    background = altcolor,
+                    foreground = colors[12],
+                    padding = 0,
+                    fontsize = 90),
 
                 widget.Volume(
                     font = "Ubuntu Mono",
-                    fmt = "Vol {}",
+                    fmt = " {}",
                     fontsize = deffontsize,
                     padding = 2,
                     foreground = colors[5],
                     background = colors[12],),
 
                 widget.TextBox(
-                       text = '',
-                       font = "Ubuntu Mono",
-                       background = colors[12],
-                       foreground = altcolor,
-                       padding = 0,
-                       fontsize = 90),
+                    text = '',
+                    font = "Ubuntu Mono",
+                    background = colors[12],
+                    foreground = altcolor,
+                    padding = 0,
+                    fontsize = 90),
 
                 widget.Clock(
                     font = "Ubuntu Mono",
@@ -452,15 +458,15 @@ def init_widgets_list():
                     foreground = alttext,
                     background = altcolor,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh")},
-                    format="%y %b %d | %H:%M"),
+                    format="%Y/%m/%d | %H:%M"),
 
                 widget.TextBox(
-                       text = '',
-                       font = "Ubuntu Mono",
-                       background = altcolor,
-                       foreground = colors[12],
-                       padding = 0,
-                       fontsize = 90),
+                    text = '',
+                    font = "Ubuntu Mono",
+                    background = altcolor,
+                    foreground = colors[12],
+                    padding = 0,
+                    fontsize = 90),
 
                 widget.Systray(
                     background=colors[12],
@@ -509,7 +515,7 @@ widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=44, opacity=0.85, background="000000"))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=40, opacity=0.85, background="000000"))]
                 # left=bar.Bar(widgets=init_widgets_screen2(), size=44, opacity=0.85, background= "000000"))]
 
 screens = init_screens()
@@ -546,7 +552,7 @@ def assign_app_group(client):
     d["4"] = []
     d["5"] = ["Steam"]
     d["6"] = ["tmux", ]
-    d["7"] = ["thunar", "bottom"]
+    d["7"] = ["thunar", "bottom", "ranger"]
     d["8"] = ["telegram-desktop"]
     d["9"] = ["crx_agimnkijcaahngcdmfeangaknmldooml"]
     d["0"] = []

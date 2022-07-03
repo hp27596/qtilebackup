@@ -5,6 +5,10 @@ from config import keys
 keys.sort(key=lambda x: x.modifiers)
 
 clnlist = {}
+genbind = {}
+navbind1 = {}
+navbind2 = {}
+wsbind = {}
 
 #clean up the list
 for i in keys:
@@ -31,11 +35,6 @@ for i in keys:
 
         keybind = keybind + i.key
         clnlist.update({keybind:i.desc})
-
-genbind = {}
-navbind1 = {}
-navbind2 = {}
-wsbind = {}
 
 navkey = ['Up', 'Down', 'Left', 'Right', ' h', ' j', ' k', ' l']
 
