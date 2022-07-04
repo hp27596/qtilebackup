@@ -52,7 +52,7 @@
 
 ;; faster terminal access
 (map! :leader
-      :desc "toggle vterm popup" "v" #'+vterm/toggle)
+      :desc "toggle vterm popup" "m" #'+vterm/toggle)
 
 ;; dired vim keys
 (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)

@@ -79,8 +79,8 @@ keys = [
 # MULTIMEDIA KEYS
 
 # INCREASE/DECREASE BRIGHTNESS
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +10%"), lazy.spawn(home + "/.config/qtile/scripts/currentbrightness.sh")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%- "), lazy.spawn(home + "/.config/qtile/scripts/currentbrightness.sh")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn(home + "/.config/qtile/scripts/extbright.sh up")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn(home + "/.config/qtile/scripts/extbright.sh down")),
 
 # INCREASE/DECREASE/MUTE VOLUME
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle"), lazy.spawn(home + "/.config/qtile/scripts/currentvolume.sh")),
