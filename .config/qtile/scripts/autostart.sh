@@ -26,7 +26,7 @@ caffeine &
 picom --config ~/.config/picom/picom.conf --experimental-backends &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
-feh --bg-fill ~/.config/qtile/scripts/1099421.png
+feh --bg-fill ~/.config/qtile/1099421.png
 
 sleep 1
 alacritty &

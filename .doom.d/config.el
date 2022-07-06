@@ -52,11 +52,16 @@
 
 ;; faster terminal access
 (map! :leader
-      :desc "toggle vterm popup" "m" #'+vterm/toggle)
+      :desc "toggle vterm popup" "0" #'+vterm/toggle)
 
 ;; dired vim keys
 (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
 (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)
+
+(add-hook 'org-mode-hook #'visual-fill-column-mode)
+;; (global-visual-fill-column-mode t)
+(setq-default visual-fill-column-center-text t)
+(setq-default fill-column 90)
 
 ;; org2blog setup
 ;; (require 'netrc)
@@ -90,9 +95,10 @@
 
 ;; (org2blog-user-login)
 (defun org2blog-creds-and-login()(interactive)(org2blogcreds)(org2blog-user-login))
-(map! :leader
-      :desc "Input credentials and Login to org2blog" "l" #'org2blog-creds-and-login)
 
+(map! :leader
+      :prefix "o"
+      :desc "Org2blog creds and login" "4" #'org2blog-creds-and-login)
 ;; (org2blogcreds)
         ;; (url (nth 0 (auth-source-user-and-password "url")))
         ;; (urls (auth-source-user-and-password "url"))
@@ -143,7 +149,9 @@
   (setq org-auto-tangle-default t))
 
 ;; full link instead of shortcut
-;; (setq org-descriptive-links nil)
+(setq org-descriptive-links nil)
+
+
 
 ;; scroll margin
 (setq scroll-margin 8)
@@ -152,10 +160,10 @@
   "Blog tags for Wordpress "
   "function name: "
 
-  "#+BLOG: peterconfidential
+  "#+BLOG: blog
 #+PERMALINK:
 #+CATEGORY:
-#+POST_TAGS:
+#+TAGS:
 #+TITLE:
 #+DESCRIPTION:
 #+AUTHOR: Hp")

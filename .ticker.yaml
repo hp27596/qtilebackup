@@ -1,6 +1,6 @@
 interval: 300
 show-summary: false
-show-tags: true
+show-tags: false
 show-fundamentals: true
 show-separator: true
 show-holdings: true
@@ -12,6 +12,7 @@ watchlist:
   - SPY
   # - ^NDX
   - AMC
+  - BTC-USD
   # - BBBY
 lots:
   - symbol: "GME"

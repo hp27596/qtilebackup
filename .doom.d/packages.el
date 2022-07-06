@@ -24,6 +24,7 @@
 (package! wc-mode)
 (package! tree-sitter)
 (package! tree-sitter-langs)
+(package! visual-fill-column)
 ;; (package! minimap)
 ;; (package! rotate)
 
