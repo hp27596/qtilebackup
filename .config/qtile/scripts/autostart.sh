@@ -10,7 +10,7 @@ function run {
 
 
 #starting utility applications at boot time
-xautolock -time 10 -locker 'betterlockscreen -l' -detectsleep -killtime 15 -killer "systemctl suspend" &
+xautolock -time 10 -locker 'betterlockscreen -l' -detectsleep -killtime 10 -killer "systemctl suspend" &
 
 emacs --daemon &
 nextcloud &
@@ -36,6 +36,8 @@ run google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder -
 sleep 1
 tmux kill-server &
 alacritty --class tmux,tmux -e tmux &
+
+run python ~/pyscripts/nucleartoast.py
 
    #starting user applications at boot time
 # run volumeicon &

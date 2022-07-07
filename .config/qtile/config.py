@@ -44,15 +44,15 @@ keys = [
     Key([mod], "m", lazy.spawn('env GDK_SCALE=2 steam'), desc='Launch Steam'),
     Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/logout.sh'), desc='Logout Menu'),
     Key([mod], "p", lazy.spawn(home + '/.config/qtile/scripts/togglepicom.sh'), desc='Toggle Picom Transparency'),
-    Key([mod], "i", lazy.spawn(home + '/.config/qtile/scripts/swau.sh'), desc='Switch Audio Output Source'),
+    # Key([mod], "i", lazy.spawn(home + '/.config/qtile/scripts/swau.sh'), desc='Switch Audio Output Source'),
+    Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-launch.sh"), desc='Dmenu Misc Script Launcher'),
 
 # ALACRITTY KEYBINDS
     Key([mod], "n", lazy.spawn(myTerm + ' --class ranger,ranger -e ranger'), desc='Launch Ranger'),
     Key([mod], "b", lazy.spawn(myTerm + ' --class bottom,bottom -e btm --battery'), desc='Launch Bottom'),
     Key([mod], "r", lazy.spawn(myTerm + " --class sway-launcher,sway-launcher -e sway-launcher-desktop"), desc='Open App Launcher TUI'),
     Key([mod], "u", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh"), desc='Connect to Wifi'), #fixes nmtui resizing issue
-    Key([mod], "y", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh"), desc='Run Greetings Script'),
-    Key([mod], "slash", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/exportkeys.sh"), desc='View available keybinds'),
+    # Key([mod], "y", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/timescript.sh"), desc='Run Greetings Script'),
 
 # SUPER + SHIFT KEYS
 
@@ -554,7 +554,7 @@ def assign_app_group(client):
     d["6"] = ["tmux", ]
     d["7"] = ["thunar", "bottom", "ranger"]
     d["8"] = ["telegram-desktop"]
-    d["9"] = ["crx_agimnkijcaahngcdmfeangaknmldooml"]
+    d["9"] = ["crx_agimnkijcaahngcdmfeangaknmldooml","nuclear"]
     d["0"] = []
     ##########################################################
     wm_class = client.window.get_wm_class()[0]
