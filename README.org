@@ -19,6 +19,6 @@ If you want to install everything as is what I have though, run the ~installscri
 
 Ideally, if I were you, I'd look into which tools I'd like to check out, and only copy the dotfiles of that tool. E.g, if I want to check out this repo's qtile config, I'd go ahead and copy ~qtilebackup/.config/qtile~ to my ~.config~ folder
 
-/*There's a bunch of scripts I wrote and find useful in ~/qtile/scripts/misc/~ folder. Check it out if you'd like. The dmenu script to launch scripts is ~dm-launch.sh~. I binded it to ~Meta+Slash~ in my qtile config (~M+/~)*/
+*There's a bunch of scripts I wrote and find useful in ~/qtile/scripts/misc/~ folder. Check it out if you'd like. The dmenu script to launch scripts is ~dm-launch.sh~. I binded it to ~Meta+Slash~ in my qtile config (~M+/~)*
 
 Enjoy!
