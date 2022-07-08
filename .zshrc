@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/hp/.oh-my-zsh"
-export VISUAL=emacs
+export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR=nvim
 export PATH="$HOME/.emacs.d/bin:$HOME/.local/bin:$PATH"
 export HISTCONTROL=ignoredups:erasedups
