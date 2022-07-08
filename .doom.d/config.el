@@ -99,17 +99,8 @@
 (map! :leader
       :prefix "o"
       :desc "Org2blog creds and login" "4" #'org2blog-creds-and-login)
-;; (org2blogcreds)
-        ;; (url (nth 0 (auth-source-user-and-password "url")))
-        ;; (urls (auth-source-user-and-password "url"))
-;; (setq blog  "peter" t)
-;;       wpuser (netrc-get blog "login")
-;;       wppass (netrc-get blog "password"))
-;; (setq config `(("peter"
-;;          :url "https://peterconfidential.com/xmlrpc.php"
-;;          :username "hp27596")))
-;; (setq org2blog/wp-blog-alist config)
 
+(setq org-export-show-temporary-export-buffer nil)
 (setq org2blog/wp-image-upload t)
 
 

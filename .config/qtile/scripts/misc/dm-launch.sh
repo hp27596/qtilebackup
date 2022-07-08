@@ -6,8 +6,8 @@
 declare -a options=(
     "Update Cmus Library - cmus-update.sh"
     "View keybinds (Term) - exportkeys.sh"
-    "Logout - logout.sh"
-    "Network (Term) - nmtui.sh"
+    "Logout Prompt - logout.sh"
+    "Connect to Network (Term) - nmtui.sh"
     "Switch Audio Source - swau.sh"
     "General Info (Term) - timescript.sh"
 )
