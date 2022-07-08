@@ -3,13 +3,15 @@
 
 This is my dotfiles for my whole qtile system, including dots for tools I used.
 
-[[~/Pictures/2022-06-22_12-26.png]]
+[[arch_linux_qtile.png]]
 
 It's really meant to be used just by me, as there are my personal packages and tools included in this repository.
 
 I run the script ~backup.sh~ periodically to copy all my personal dotfiles to this repo and upload it to github.
 
 You're however welcome to check it all out and use what you'd like.
+
+[[arch_linux_qtile2.png]]
 
 If you want to install everything as is what I have though, run the ~installscript.sh~ file.
 
