@@ -10,6 +10,7 @@ declare -a options=(
     "Connect to Network (Term) - nmtui.sh"
     "Switch Audio Source - swau.sh"
     "General Info (Term) - timescript.sh"
+    "Backup dotfiles (Term) - qtilebu.sh"
 )
 
 # add number count
