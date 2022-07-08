@@ -10,7 +10,7 @@ function run {
 
 
 #starting utility applications at boot time
-xautolock -time 10 -locker 'betterlockscreen -l' -detectsleep -killtime 10 -killer "systemctl suspend" &
+xautolock -time 10 -locker 'betterlockscreen -l' -detectsleep -killtime 12 -killer "systemctl suspend" &
 
 emacs --daemon &
 nextcloud &
