@@ -2,6 +2,7 @@
 /home/hp/Music/Andrea Bocelli - Can't Help Falling In Love (HD).mp3
 /home/hp/Music/Barry White - Never Never Gonna Give Ya Up (Baby Driver Soundtrack).mp3
 /home/hp/Music/Bell Bottoms (Baby Driver).mp3
+/home/hp/Music/Creedence Clearwater Revival - Fortunate Son.webm
 /home/hp/Music/Doja Cat - Freak (Lyrics).mp3
 /home/hp/Music/Eminem - Walk On Water (Lyric Video) ft. Beyoncé.mp3
 /home/hp/Music/Focus - Hocus Pocus (Baby Driver Soundtrack).mp3
@@ -10,12 +11,17 @@
 /home/hp/Music/Led Zeppelin - Stairway to Heaven (Trap Remix).mp3
 /home/hp/Music/Led Zeppelin - Stairway to heaven Vkgoeswild piano cover.mp3
 /home/hp/Music/Marc Martel - My Way (Official Audio).mp3
+/home/hp/Music/Marié Digby - What I've Done (Acoustic Version).webm
 /home/hp/Music/[OFFICIAL VIDEO] Bohemian Rhapsody Pentatonix.mp3
+/home/hp/Music/Pentatonix - Havana.webm
+/home/hp/Music/Pentatonix - Imagine.webm
 /home/hp/Music/Sick Enough To Die - Mc Mong ft. Mellow (Lyrics).mp3
 /home/hp/Music/Skylar Grey - Coming Home, Pt. II (Official Video).mp3
 /home/hp/Music/Take_Me_To_Church_-_Hozier_Cover_by_Jasmine_Thompson[ListenVid.com].mp3
 /home/hp/Music/The Jon Spencer Blues Explosion - Bellbottoms (Baby Driver Soundtrack).mp3
+/home/hp/Music/The Raspberries - Go All The Way.webm
 /home/hp/Music/The Sound of Silence (Original Version from 1964).mp3
+/home/hp/Music/Tove Lo - Habits (Stay High).webm
 /home/hp/Music/Travis Scott - The Plan (From the Motion Picture TENET - Official Audio).mp3
 /home/hp/Music/Valentina Lisitsa - Moonlight Sonata Op.27 No.2 Mov.1,2,3 (Beethoven).mp3
 /home/hp/Music/Vinnie Maniscalco - TaKillya (Baby Driver Soundtrack).mp3

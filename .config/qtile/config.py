@@ -519,8 +519,6 @@ def init_screens():
                 # left=bar.Bar(widgets=init_widgets_screen2(), size=44, opacity=0.85, background= "000000"))]
 
 screens = init_screens()
-# screens = Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=44, opacity=0.85, background="000000"))
-
 
 # MOUSE CONFIGURATION
 mouse = [
