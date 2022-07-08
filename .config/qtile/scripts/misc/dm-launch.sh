@@ -5,12 +5,12 @@
 # declare scripts description and location
 declare -a options=(
     "Update Cmus Library - cmus-update.sh"
-    "View keybinds (Term) - exportkeys.sh"
+    "View Keybinds (Term) - exportkeys.sh"
     "Logout Prompt - logout.sh"
     "Connect to Network (Term) - nmtui.sh"
     "Switch Audio Source - swau.sh"
     "General Info (Term) - timescript.sh"
-    "Backup dotfiles (Term) - qtilebu.sh"
+    "Backup Dotfiles (Term) - qtilebu.sh"
 )
 
 # add number count

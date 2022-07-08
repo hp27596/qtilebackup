@@ -147,6 +147,9 @@
 ;; scroll margin
 (setq scroll-margin 8)
 
+;; emacs everywhere
+;; (setq emacs-everywhere-mode-initial-map nil)
+
 (define-skeleton autofill-blog-tags
   "Blog tags for Wordpress "
   "function name: "

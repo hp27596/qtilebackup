@@ -45,6 +45,7 @@ keys = [
     Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/logout.sh'), desc='Logout Menu'),
     Key([mod], "p", lazy.spawn(home + '/.config/qtile/scripts/togglepicom.sh'), desc='Toggle Picom Transparency'),
     Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-launch.sh"), desc='Dmenu Misc Script Launcher'),
+    # Key([mod], "i", lazy.spawn('emacsclient --eval "(emacs-everywhere)"')),
 
 # ALACRITTY KEYBINDS
     Key([mod], "n", lazy.spawn(myTerm + ' --class ranger,ranger -e ranger'), desc='Launch Ranger'),
@@ -281,7 +282,7 @@ def init_colors():
             ["#e75480", "#e75480"], #15
             ["#2aa899", "#2aa899"], #16
             ["#abb2bf", "#abb2bf"],# color 17
-            ["#81a1c1", "#81a1c1"], #18
+            ["#555555", "#555555"], #18
             ["#56b6c2", "#56b6c2"], #19
             ["#b48ead", "#b48ead"], #20
             ["#e06c75", "#e06c75"], #21
@@ -307,15 +308,15 @@ widget_defaults = init_widgets_defaults()
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     basecolor = colors[14]
-    maincolor = colors[12]
-    altcolor = colors[18]
+    maincolor = colors[18]
+    altcolor = colors[12]
     textcolor = colors[5]
     alttext = colors[8]
     deffontsize = 22
     widgets_list = [
 
                 widget.GroupBox(
-                    **base(bg=colors[14]),
+                    **base(bg=maincolor),
                     font='Ubuntu Mono',
                     fontsize = 22,
                     padding_x = 3,
@@ -325,7 +326,7 @@ def init_widgets_list():
                     highlight_method='block',
                     urgent_alert_method='block',
                     urgent_border=colors[9],
-                    this_current_screen_border=colors[12],
+                    this_current_screen_border=maincolor,
                     this_screen_border=colors[17],
                     other_current_screen_border=colors[13],
                     other_screen_border=colors[17],
@@ -342,7 +343,6 @@ def init_widgets_list():
                     margin_y=0,
                     fontsize=24,
                     border=maincolor,
-                    # unfocused_border=colors[13],
                     foreground=colors[5],
                     margin=0,
                     txt_floating='🗗',
@@ -350,64 +350,33 @@ def init_widgets_list():
                     borderwidth = 1,
                     background=basecolor),
 
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = colors[14],
-                #     foreground = colors[12],
-                #     padding = 0,
-                #     fontsize = 90),
-
                 widget.CurrentLayoutIcon(
                     custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-                    # foreground = colors[5],
-                    # background = maincolor,
                     padding = 0,
                     scale = 0.7),
-
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
 
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = colors[12],
-                #     foreground = altcolor,
-                #     padding = 0,
-                #     fontsize = 90),
-
                 widget.ThermalSensor(
                     font = "Ubuntu Mono",
                     fontsize = deffontsize,
                     padding = 2,
-                    # background = altcolor,
-                    # foreground = alttext,
                     tag_sensor = "Core 0",
                     update_interval = 5),
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
-
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = altcolor,
-                #     foreground = colors[12],
-                #     padding = 0,
-                #     fontsize = 90),
 
                 widget.Battery(
                     format = ' {char} {percent:2.0%}',
@@ -420,24 +389,14 @@ def init_widgets_list():
                     padding = 2,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},
                     notify_below = 0.15,),
-                    # foreground = colors[5],
-                    # background = colors[12]),
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = colors[12],
-                #     foreground = altcolor,
-                #     padding = 0,
-                #     fontsize = 90),
 
                 widget.Wlan(
                     format = '{percent:2.0%} {essid}',
@@ -445,118 +404,75 @@ def init_widgets_list():
                     font = "Ubuntu Mono",
                     fontsize = deffontsize,
                     padding = 2,
-                    # background = altcolor,
-                    # foreground = alttext,
-                    max_chars = 10,
+                    max_chars = 9,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh")}, #fixes nmtui resizing issue
                     update_interval = 5),
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = altcolor,
-                #     foreground = colors[12],
-                #     padding = 0,
-                #     fontsize = 90),
 
                 widget.Volume(
                     font = "Ubuntu Mono",
                     fmt = " {}",
                     fontsize = deffontsize,
                     padding = 2,),
-                    # foreground = colors[5],
-                    # background = colors[12],),
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = colors[12],
-                #     foreground = altcolor,
-                #     padding = 0,
-                #     fontsize = 90),
 
                 widget.Clock(
                     font = "Ubuntu Mono",
                     fontsize = deffontsize,
                     padding = 2,
-                    # foreground = alttext,
-                    # background = altcolor,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     format="%a, %y %b %d"),
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = altcolor,
-                #     foreground = maincolor,
-                #     padding = 0,
-                #     fontsize = 90),
 
                 widget.Clock(
                     font = "Ubuntu Mono",
                     fontsize = deffontsize,
                     padding = 2,
-                    # foreground = alttext,
-                    # background = maincolor,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     format="%H:%M"),
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
-                # widget.TextBox(
-                #     text = '',
-                #     font = "Ubuntu Mono",
-                #     background = maincolor,
-                #     foreground = altcolor,
-                #     padding = 0,
-                #     fontsize = 90),
 
                 widget.Systray(
-                    # background = altcolor,
                     icon_size=30,
                     padding = 2),
 
                 widget.Sep(
                     font = "Ubuntu Mono",
                     linewidth = 1,
-                    # background = maincolor,
                     foreground = colors[5],
                     padding = 10,
                     size_percent = 65,
                     fontsize = 90),
 
                 widget.Image(
-                    # background = maincolor,
                     margin = 3,
                     filename = '~/.config/qtile/icons/power2.png',
                     mouse_callbacks = {'Button1': lazy.spawn('/home/hp/.config/qtile/scripts/logout.sh')},),
