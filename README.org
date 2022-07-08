@@ -1,4 +1,4 @@
-#+title: Readme
+#+title: My backed up qtile and other config files
 #+author: Hp
 
 This is my dotfiles for my whole qtile system, including dots for tools I used.
