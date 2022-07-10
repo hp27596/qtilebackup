@@ -2,7 +2,7 @@
     frame_width = 1
     frame_color = "#08052b"
     
-    font = Noto Sans 10
+    font = Ubuntu 11
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -73,7 +73,7 @@
 	width = 300
 	height = 300
 	origin = top-right
-	# offset = 10x50
+	offset = 0x25
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.

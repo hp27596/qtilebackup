@@ -18,7 +18,7 @@ for i in keys:
         keybind = ''
         for j in i.modifiers:
             if j == 'mod4':
-                j = 'Meta'
+                j = 'Super'
             if j == 'mod1':
                 j = 'Alt'
             if j == 'shift':
@@ -30,6 +30,8 @@ for i in keys:
 
         if i.key == 'space':
             i.key = 'Space'
+        elif i.key == 'slash':
+            i.key = '/'
         else:
             pass
 

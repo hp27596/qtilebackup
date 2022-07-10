@@ -26,19 +26,20 @@ caffeine &
 picom --config ~/.config/picom/picom.conf --experimental-backends &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
+clipmenud &
 feh --bg-fill ~/.config/qtile/1099421.png
 
-sleep 1
+sleep 2
 alacritty &
-run emacsclient -c -a "emacs" &
 run google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --disable-features=UseChromeOSDirectVideoDecoder --gtk-version=4 &
 
 sleep 1
 tmux kill-server &
 alacritty --class tmux,tmux -e tmux &
 
-run python ~/pyscripts/nucleartoast.py
+python ~/pyscripts/nucleartoast.py &
 
+run emacsclient -c -a "emacs" &
    #starting user applications at boot time
 # run volumeicon &
 #run discord &

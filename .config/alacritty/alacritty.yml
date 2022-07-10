@@ -49,3 +49,7 @@ colors:
     magenta: '0xaf87ff'
     cyan:    '0x51ceff'
     white:   '0xffffff'
+
+key_bindings:
+  - { key: Key4, mode: Vi|~Search, action: Last }
+  - { key: V, mods: Alt, mode: ~Search, action: ToggleViMode }

@@ -24,6 +24,9 @@
 (define-key evil-insert-state-map "\C-v" 'evil-paste-before)
 ;; don't auto complete current sentence when enter
 (define-key evil-insert-state-map "\M-ENT" 'vertico-exit-input)
+;; visual line navigation on arrow keys and normal lines on jk
+(define-key evil-normal-state-map [down] 'evil-next-visual-line)
+(define-key evil-normal-state-map [up] 'evil-previous-visual-line)
 
 ;; wordcount
 (wc-mode t)
@@ -133,11 +136,11 @@
   (consult-buffer))
 
 ;; Org Auto Tangle
-(use-package! org-auto-tangle
-  :defer t
-  :hook (org-mode . org-auto-tangle-mode)
-  :config
-  (setq org-auto-tangle-default t))
+;; (use-package! org-auto-tangle
+;;   :defer t
+;;   :hook (org-mode . org-auto-tangle-mode)
+;;   :config
+;;   (setq org-auto-tangle-default t))
 
 ;; full link instead of shortcut
 (setq org-descriptive-links nil)
