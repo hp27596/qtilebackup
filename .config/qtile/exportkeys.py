@@ -32,6 +32,10 @@ for i in keys:
             i.key = 'Space'
         elif i.key == 'slash':
             i.key = '/'
+        elif i.key == 'comma':
+            i.key = ','
+        elif i.key == 'period':
+            i.key = '.'
         else:
             pass
 

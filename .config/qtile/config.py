@@ -236,15 +236,14 @@ keys = [
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle Window Floating'),
 
 # Cycle Floating Window
-    Key([mod], "period", float_cycle_forward),
-    Key([mod], "comma", float_cycle_backward),
+    Key([mod], "period", float_cycle_forward, desc='Next Floating Window'),
+    Key([mod], "comma", float_cycle_backward, desc='Previous Floating Window'),
 
 # Change group
     Key([mod], "Tab", lazy.screen.next_group(), desc='Next Workspace'),
     Key([mod, "shift" ], "Tab", lazy.screen.prev_group(), desc='Previous Workspace'),
-    Key(["mod1"], "Tab", lazy.group.next_window()),
-        # lazy.window.bring_to_front()),
-    Key(["mod1", "shift"], "Tab", lazy.group.prev_window()),
+    Key(["mod1"], "Tab", lazy.group.next_window(), desc='Next Window'),
+    Key(["mod1", "shift"], "Tab", lazy.group.prev_window(), desc='Previous Window'),
 
 ]
 #ENDKEYS
@@ -403,6 +402,7 @@ def init_widgets_list():
                 widget.Sep(**sep()),
 
                 widget.ThermalSensor(
+                    fmt = '{}',
                     tag_sensor = "Core 0",
                     update_interval = 5),
 
@@ -446,8 +446,7 @@ def init_widgets_list():
                 widget.Sep(**sep()),
 
                 widget.Wttr(
-                    location = {"Hanoi":"Hanoi"},
-                    max_chars = 20,),
+                    location = {"":""},),
 
                 widget.Sep(**sep()),
 
@@ -587,5 +586,5 @@ floating_layout = layout.Floating(float_rules=[
 ], fullscreen_border_width = 0, border_width = 0)
 
 auto_fullscreen = True
-focus_on_window_activation = "focus" # or smart
+focus_on_window_activation = "smart" # or focus
 wmname = "Qtile" # LG3D if Java applications return errors
