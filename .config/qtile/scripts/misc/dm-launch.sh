@@ -25,7 +25,7 @@ choice=$(printf '%s\n' "${options[@]}" | dmenu -fn 'Ubuntu Mono:pixelsize=44' -i
 # run script either directly or in a terminal
 if [[ "$choice" == *"Term"* ]]; then
     scr=$(printf "$choice" | awk '{print $NF}')
-    alacritty -e sh $HOME/.config/qtile/scripts/misc/"$scr"
+    alacritty -e $HOME/.config/qtile/scripts/misc/"$scr"
 elif [ "$choice" ]; then
     scr=$(printf "$choice" | awk '{print $NF}')
     bash $HOME/.config/qtile/scripts/misc/"$scr"
