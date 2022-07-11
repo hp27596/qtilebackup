@@ -14,7 +14,50 @@ mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
+floating_window_index = 0
 
+# Cycle Floating Window
+def float_cycle(qtile, forward: bool):
+    global floating_window_index
+    floating_windows = []
+    for window in qtile.current_group.windows:
+        if window.floating:
+            floating_windows.append(window)
+    if not floating_windows:
+        return
+    floating_window_index = min(floating_window_index, len(floating_windows) -1)
+    if forward:
+        floating_window_index += 1
+    else:
+        floating_window_index += 1
+    if floating_window_index >= len(floating_windows):
+        floating_window_index = 0
+    if floating_window_index < 0:
+        floating_window_index = len(floating_windows) - 1
+    win = floating_windows[floating_window_index]
+    win.cmd_bring_to_front()
+    win.cmd_focus()
+
+@lazy.function
+def float_cycle_backward(qtile):
+    float_cycle(qtile, False)
+
+@lazy.function
+def float_cycle_forward(qtile):
+    float_cycle(qtile, True)
+
+@lazy.function
+def float_to_front(qtile):
+    """
+    Bring all floating windows of the group to front
+    """
+    global floating_windows
+    floating_windows = []
+    for window in qtile.currentGroup.windows:
+        if window.floating:
+            window.cmd_bring_to_front()
+            floating_windows.append(window)
+    floating_windows[-1].cmd_focus()
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -192,6 +235,10 @@ keys = [
 # TOGGLE FLOATING LAYOUT
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle Window Floating'),
 
+# Cycle Floating Window
+    Key([mod], "period", float_cycle_forward),
+    Key([mod], "comma", float_cycle_backward),
+
 # Change group
     Key([mod], "Tab", lazy.screen.next_group(), desc='Next Workspace'),
     Key([mod, "shift" ], "Tab", lazy.screen.prev_group(), desc='Previous Workspace'),
@@ -228,40 +275,6 @@ for i in groups:
     ])
 
 
-def init_layout_theme():
-    return {"margin":10,
-            "border_width":2,
-            "border_focus": "#e06c75",
-            "border_normal": "#212121"
-            }
-
-layout_theme = init_layout_theme()
-
-
-layouts = [
-    layout.MonadTall(margin=8, border_width=2, border_focus="#e06c75", border_normal="#212121"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#e06c75", border_normal="#212121"),
-    # layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
-    # layout.RatioTile(**layout_theme),
-    # layout.Spiral(**layout_theme),
-    # layout.Columns(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.Floating(**layout_theme),
-    # layout.Stack(**layout_theme),
-    # layout.Tile(**layout_theme),
-    # layout.TreeTab(
-    #     sections=['FIRST', 'SECOND'],
-    #     bg_color = '#141414',
-    #     active_bg = '#0000ff',
-    #     inactive_bg = '#1e90ff',
-    #     padding_y =5,
-    #     section_top =10,
-    #     panel_width = 280),
-    # layout.VerticalTile(**layout_theme),
-    # layout.Zoomy(**layout_theme)
-]
-
 # COLORS FOR THE BAR
 def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
@@ -291,6 +304,40 @@ def init_colors():
 
 colors = init_colors()
 
+def init_layout_theme():
+    return {"margin":10,
+            "border_width":2,
+            "border_focus": "#6790eb",
+            "border_normal": "#2F343F",
+            }
+
+layout_theme = init_layout_theme()
+
+
+layouts = [
+    layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
+    # layout.Tile(**layout_theme),
+    # layout.Matrix(**layout_theme),
+    layout.Bsp(**layout_theme),
+    # layout.RatioTile(**layout_theme),
+    # layout.Spiral(**layout_theme),
+    # layout.Columns(**layout_theme),
+    layout.Max(**layout_theme),
+    layout.Floating(**layout_theme),
+    # layout.Stack(**layout_theme),
+    # layout.TreeTab(
+    #     sections=['FIRST', 'SECOND'],
+    #     bg_color = '#141414',
+    #     active_bg = '#0000ff',
+    #     inactive_bg = '#1e90ff',
+    #     padding_y =5,
+    #     section_top =10,
+    #     panel_width = 280),
+    # layout.VerticalTile(**layout_theme),
+    # layout.Zoomy(**layout_theme)
+]
+
 # Default Separator format
 def sep():
     return dict(linewidth = 1,
@@ -314,9 +361,7 @@ def init_widgets_list():
     basecolor = colors[14]
     maincolor = colors[18]
     widgets_list = [
-
                 widget.GroupBox(
-                    # **base(bg=maincolor),
                     font='Ubuntu Mono',
                     fontsize = 22,
                     padding_x = 3,
@@ -445,7 +490,9 @@ mouse = [
          start=lazy.window.get_position()),
 
     Drag("M-3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size())
+         start=lazy.window.get_size()),
+
+    Click("M-2", lazy.window.bring_to_front())
 ]
 
 dgroups_key_binder = None
