@@ -153,6 +153,7 @@
 ;; emacs everywhere
 ;; (setq emacs-everywhere-mode-initial-map nil)
 
+;; Insert Blog Tags
 (define-skeleton autofill-blog-tags
   "Blog tags for Wordpress "
   "function name: "
@@ -164,6 +165,22 @@
 #+TITLE:
 #+DESCRIPTION:
 #+AUTHOR: Hp")
+(map! :leader
+      :prefix "i"
+      :desc "Fill blog tags" "b" 'autofill-blog-tags)
+
+;; Faster insert of source code tags
+(defun insert-begin-src()(interactive)(insert "#+begin_src "))
+(defun insert-end-src()(interactive)(insert "#+end_src "))
+
+(map! :leader
+      :prefix "i"
+      :desc "Insert Begin Src Snippet" "1" #'insert-begin-src)
+
+(map! :leader
+      :prefix "i"
+      :desc "Insert End Src Snippet" "2" #'insert-end-src)
+
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.

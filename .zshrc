@@ -124,6 +124,7 @@ alias wlg='nohup wl-gammactl -g'
 alias tmuxa='tmux attach -t 0'
 alias mv='mv -i'
 alias rm='rm -i'
+alias resemacs='killall emacs && \emacs --daemon'
 cdl() { cd "$@" && ls; }
 
 # uname -a
