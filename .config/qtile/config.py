@@ -291,17 +291,21 @@ def init_colors():
 
 colors = init_colors()
 
-def base(fg='text', bg='dark'):
-    return {'foreground': colors[12],'background': colors[14]}
-
+# Default Separator format
+def sep():
+    return dict(linewidth = 1,
+                padding = 10,
+                size_percent = 65,
+                fontsize = 90)
 
 # WIDGETS FOR THE BAR
 
 def init_widgets_defaults():
-    return dict(font="Noto Sans",
-                fontsize = 9,
+    return dict(font="Ubuntu Mono",
+                fontsize = 22,
                 padding = 2,
-                background=colors[14])
+                foreground = colors[5],
+                background = colors[14])
 
 widget_defaults = init_widgets_defaults()
 
@@ -309,14 +313,10 @@ def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     basecolor = colors[14]
     maincolor = colors[18]
-    altcolor = colors[12]
-    textcolor = colors[5]
-    alttext = colors[8]
-    deffontsize = 22
     widgets_list = [
 
                 widget.GroupBox(
-                    **base(bg=maincolor),
+                    # **base(bg=maincolor),
                     font='Ubuntu Mono',
                     fontsize = 22,
                     padding_x = 3,
@@ -355,28 +355,13 @@ def init_widgets_list():
                     padding = 0,
                     scale = 0.7),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
 
                 widget.ThermalSensor(
-                    font = "Ubuntu Mono",
-                    fontsize = deffontsize,
-                    padding = 2,
                     tag_sensor = "Core 0",
                     update_interval = 5),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
 
                 widget.Battery(
                     format = ' {char} {percent:2.0%}',
@@ -384,116 +369,52 @@ def init_widgets_list():
                     charge_char = '',
                     discharge_char = '',
                     full_char = '=',
-                    font = "Ubuntu Mono",
-                    fontsize = deffontsize,
-                    padding = 2,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},
                     notify_below = 0.15,),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
 
                 widget.Wlan(
                     format = '{percent:2.0%} {essid}',
                     disconnected_message = 'Disconnected',
-                    font = "Ubuntu Mono",
-                    fontsize = deffontsize,
-                    padding = 2,
                     max_chars = 9,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh")}, #fixes nmtui resizing issue
                     update_interval = 5),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
 
                 widget.Volume(
-                    font = "Ubuntu Mono",
-                    fmt = " {}",
-                    fontsize = deffontsize,
-                    padding = 2,),
+                    fmt = " {}",),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
 
                 widget.Clock(
-                    font = "Ubuntu Mono",
-                    fontsize = deffontsize,
-                    padding = 2,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     format="%a, %y %b %d"),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
 
                 widget.Clock(
-                    font = "Ubuntu Mono",
-                    fontsize = deffontsize,
-                    padding = 2,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     format="%H:%M"),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
+
+                widget.Wttr(
+                    location = {"Hanoi":"Hanoi"},
+                    max_chars = 20,),
+
+                widget.Sep(**sep()),
 
                 widget.Systray(
-                    icon_size=30,
-                    padding = 2),
+                    icon_size=30,),
 
-                widget.Sep(
-                    font = "Ubuntu Mono",
-                    linewidth = 1,
-                    foreground = colors[5],
-                    padding = 10,
-                    size_percent = 65,
-                    fontsize = 90),
+                widget.Sep(**sep()),
 
                 widget.Image(
                     margin = 3,
                     filename = '~/.config/qtile/icons/power2.png',
                     mouse_callbacks = {'Button1': lazy.spawn('/home/hp/.config/qtile/scripts/logout.sh')},),
-
-        ]
-    return widgets_list
-
-def init_widgets_list2():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
-    widgets_list = [
-        widget.Spacer(
-            background=colors[14]),
-
-        widget.Systray(
-                    background=colors[14],
-                    icon_size=30,
-                    padding = 10),
-
-        widget.Spacer(
-            length=10,
-            background=colors[14]),
 
         ]
     return widgets_list
@@ -505,7 +426,7 @@ def init_widgets_screen1():
     return widgets_screen1
 
 def init_widgets_screen2():
-    widgets_screen2 = init_widgets_list2()
+    widgets_screen2 = init_widgets_list()
     return widgets_screen2
 
 widgets_screen1 = init_widgets_screen1()
@@ -583,8 +504,6 @@ def set_floating(window):
         window.floating = True
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
-
-
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
@@ -621,7 +540,5 @@ floating_layout = layout.Floating(float_rules=[
 ], fullscreen_border_width = 0, border_width = 0)
 
 auto_fullscreen = True
-
 focus_on_window_activation = "focus" # or smart
-
 wmname = "Qtile" # LG3D if Java applications return errors
