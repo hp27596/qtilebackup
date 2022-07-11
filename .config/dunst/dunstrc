@@ -73,7 +73,7 @@
 	width = 300
 	height = 300
 	origin = top-right
-	offset = 2x25
+	offset = 3x25
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
