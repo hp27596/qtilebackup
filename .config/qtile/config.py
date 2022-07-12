@@ -16,35 +16,36 @@ mod2 = "control"
 home = os.path.expanduser('~')
 floating_window_index = 0
 
-# Cycle Floating Window
-def float_cycle(qtile, forward: bool):
-    global floating_window_index
-    floating_windows = []
-    for window in qtile.current_group.windows:
-        if window.floating:
-            floating_windows.append(window)
-    if not floating_windows:
-        return
-    floating_window_index = min(floating_window_index, len(floating_windows) -1)
-    if forward:
-        floating_window_index += 1
-    else:
-        floating_window_index += 1
-    if floating_window_index >= len(floating_windows):
-        floating_window_index = 0
-    if floating_window_index < 0:
-        floating_window_index = len(floating_windows) - 1
-    win = floating_windows[floating_window_index]
-    win.cmd_bring_to_front()
-    win.cmd_focus()
+# Cycle Floating Window. If I use floating mode a lot I might consider this. I don't use it right now because it messes with focus when there are toast notifications
 
-@lazy.function
-def float_cycle_backward(qtile):
-    float_cycle(qtile, False)
+# def float_cycle(qtile, forward: bool):
+#     global floating_window_index
+#     floating_windows = []
+#     for window in qtile.current_group.windows:
+#         if window.floating:
+#             floating_windows.append(window)
+#     if not floating_windows:
+#         return
+#     floating_window_index = min(floating_window_index, len(floating_windows) -1)
+#     if forward:
+#         floating_window_index += 1
+#     else:
+#         floating_window_index += 1
+#     if floating_window_index >= len(floating_windows):
+#         floating_window_index = 0
+#     if floating_window_index < 0:
+#         floating_window_index = len(floating_windows) - 1
+#     win = floating_windows[floating_window_index]
+#     win.cmd_bring_to_front()
+#     win.cmd_focus()
 
-@lazy.function
-def float_cycle_forward(qtile):
-    float_cycle(qtile, True)
+# @lazy.function
+# def float_cycle_backward(qtile):
+#     float_cycle(qtile, False)
+
+# @lazy.function
+# def float_cycle_forward(qtile):
+#     float_cycle(qtile, True)
 
 @lazy.function
 def float_to_front(qtile):
@@ -236,8 +237,8 @@ keys = [
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle Window Floating'),
 
 # Cycle Floating Window
-    Key([mod], "period", float_cycle_forward, desc='Next Floating Window'),
-    Key([mod], "comma", float_cycle_backward, desc='Previous Floating Window'),
+    # Key([mod], "period", float_cycle_forward, desc='Next Floating Window'),
+    # Key([mod], "comma", float_cycle_backward, desc='Previous Floating Window'),
 
 # Change group
     Key([mod], "Tab", lazy.screen.next_group(), desc='Next Workspace'),
