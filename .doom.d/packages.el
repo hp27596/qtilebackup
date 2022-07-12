@@ -25,6 +25,7 @@
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! visual-fill-column)
+;; (package! eww)
 ;; (package! minimap)
 ;; (package! rotate)
 

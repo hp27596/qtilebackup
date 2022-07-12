@@ -5,7 +5,12 @@ This is my dotfiles for my whole qtile system, including dots for tools I used.
 
 [[2022-07-11_16-31.png]]
 
-It's really meant to be used just by me, as there are my personal packages and tools included in this repository.
+** Why is everything so large?
+
+I'm using a 7 inch umpc, hence the scaling needs to be that way. The plus side is it makes for good demonstration and screenshots. You can scale back the DPI with ~.Xresources~ file and reduce bar size in ~qtile/config.py~.
+
+** Need to know
+This repo is really meant to be used just by me, as there are my personal packages and tools included in this repository.
 
 I run the script ~backup.sh~ periodically to copy all my personal dotfiles to this repo and upload it to github.
 
@@ -19,6 +24,7 @@ If you want to install everything as is what I have though, run the ~installscri
 
 Ideally, if I were you, I'd look into which tools I'd like to check out, and only copy the dotfiles of that tool. E.g, if I want to check out this repo's qtile config, I'd go ahead and copy ~qtilebackup/.config/qtile~ to my ~.config~ folder
 
+** Extras
 There's a bunch of scripts I wrote and find useful in ~/qtile/scripts/misc/~ folder. Check it out if you like. The dmenu script to launch scripts is ~dm-launch.sh~. I binded it to ~Meta+Slash~ in my qtile config
 
 Enjoy!

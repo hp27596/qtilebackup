@@ -420,7 +420,7 @@ def init_widgets_list():
                 widget.Sep(**sep()),
 
                 widget.Wlan(
-                    format = '{percent:2.0%} {essid}',
+                    format = '{quality} {essid}',
                     disconnected_message = 'Disconnected',
                     max_chars = 9,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh")}, #fixes nmtui resizing issue
@@ -446,6 +446,8 @@ def init_widgets_list():
                 widget.Sep(**sep()),
 
                 widget.Wttr(
+                    format = '%l:%c%t',
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     location = {"":""},),
 
                 widget.Sep(**sep()),
@@ -512,7 +514,7 @@ def assign_app_group(client):
     d["1"] = []
     d["2"] = ["emacs"]
     d["3"] = ["crx_fkpbmjlkacnnbncjojlbhceofjnapopf", "google-chrome"]
-    d["4"] = []
+    d["4"] = ["kdenlive"]
     d["5"] = ["Steam"]
     d["6"] = ["tmux", ]
     d["7"] = ["thunar", "sysmon", "ranger"]

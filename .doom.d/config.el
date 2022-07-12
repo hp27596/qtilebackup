@@ -145,7 +145,8 @@
 ;; full link instead of shortcut
 (setq org-descriptive-links nil)
 
-
+;; treemacs
+(setq treemacs-sorting 'alphabetic-case-insensitive-desc)
 
 ;; scroll margin
 (setq scroll-margin 8)
