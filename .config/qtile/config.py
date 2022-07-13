@@ -85,7 +85,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(myTerm), desc='Launch Terminal'),
     Key([mod], "t", lazy.spawn('thunar'), desc='Launch File Manager'),
     Key([mod], "m", lazy.spawn('env GDK_SCALE=2 steam'), desc='Launch Steam'),
-    Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/logout.sh'), desc='Logout Menu'),
+    Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/misc/logout.sh'), desc='Logout Menu'),
     Key([mod], "p", lazy.spawn(home + '/.config/qtile/scripts/togglepicom.sh'), desc='Toggle Picom Transparency'),
     Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-launch.sh"), desc='Dmenu Misc Script Launcher'),
     Key([mod], "i", lazy.spawn('clipmenu -fn "Ubuntu Mono:pixelsize=44" -i -l 15 -p "Choose Clipboard:"'), desc='Dmenu Clipboard'),
@@ -552,7 +552,7 @@ def set_floating(window):
         window.floating = True
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
-follow_mouse_focus = True
+follow_mouse_focus = False # This causes focus jump when using dmenu if set to True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
@@ -583,10 +583,11 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='cairo-dock'),
     Match(title='Save File'),
     Match(wm_class='sway-launcher'),
+    Match(wm_class='qutebrowser'),
     # Match(wm_class='caffeine'),
 
 ], fullscreen_border_width = 0, border_width = 0)
 
 auto_fullscreen = True
-focus_on_window_activation = "smart" # or focus
+focus_on_window_activation = "focus" # or smart
 wmname = "Qtile" # LG3D if Java applications return errors

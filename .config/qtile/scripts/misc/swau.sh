@@ -5,7 +5,7 @@
 sink1=`pactl list sinks | grep "Sink #" | sed -n -e 's/Sink \#//p' | head -1` 
 
 
-chosen=$(echo -e "[Cancel]\nSpeaker\nHeadphones\nBluetooth" | dmenu -fn 'Ubuntu Mono:pixelsize=44' -i)
+chosen=$(echo -e "[Cancel]\nSpeaker\nHeadphones\nBluetooth" | dmenu -i)
 
 if [[ $chosen = "Speaker" ]]
 then

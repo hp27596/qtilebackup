@@ -5,6 +5,7 @@
 # declare scripts description and location
 declare -a options=(
     "Kill Process - killprocess.sh"
+    "Misc Search (Synonym, etc) - search.sh"
     "Update Cmus Library - cmus-update.sh"
     "View Keybinds (Term) - exportkeys.sh"
     "Logout Prompt - logout.sh"
@@ -12,6 +13,8 @@ declare -a options=(
     "Switch Audio Source - swau.sh"
     "General Info (Term) - timescript.sh"
     "Backup Dotfiles (Term) - qtilebu.sh"
+    "Open Password Manager - passmenu"
+    "Open Clean Disk Utility (Term)- ncdu"
 )
 
 # add number count
@@ -21,15 +24,23 @@ for ((i=0;i<cnt;i++)); do
 done
 
 # run dmenu
-choice=$(printf '%s\n' "${options[@]}" | dmenu -fn 'Ubuntu Mono:pixelsize=44' -i -l 20 -p 'Choose Script:')
+choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 20 -p 'Choose Script:')
 
 # run script either directly or in a terminal
 if [[ "$choice" == *"Term"* ]]; then
     scr=$(printf "$choice" | awk '{print $NF}')
-    alacritty -e $HOME/.config/qtile/scripts/misc/"$scr"
+    if [[ "$choice" == *".sh"* ]]; then
+        alacritty -e $HOME/.config/qtile/scripts/misc/"$scr"
+    else
+        alacritty -e $scr
+    fi
 elif [ "$choice" ]; then
     scr=$(printf "$choice" | awk '{print $NF}')
-    bash $HOME/.config/qtile/scripts/misc/"$scr"
+    if [[ "$choice" == *".sh"* ]]; then
+        bash $HOME/.config/qtile/scripts/misc/"$scr"
+    else
+        bash $scr
+    fi
 else
     exit 1
 fi
