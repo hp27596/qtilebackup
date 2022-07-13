@@ -148,6 +148,9 @@
 ;; treemacs
 (setq treemacs-sorting 'alphabetic-case-insensitive-desc)
 
+;; dired
+(define-key dired-mode-map (kbd "M-i") 'dired-create-empty-file)
+
 ;; scroll margin
 (setq scroll-margin 8)
 

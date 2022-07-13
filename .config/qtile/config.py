@@ -16,8 +16,7 @@ mod2 = "control"
 home = os.path.expanduser('~')
 floating_window_index = 0
 
-# Cycle Floating Window. If I use floating mode a lot I might consider this. I don't use it right now because it messes with focus when there are toast notifications
-
+# Cycle Floating Window
 # def float_cycle(qtile, forward: bool):
 #     global floating_window_index
 #     floating_windows = []
@@ -416,7 +415,7 @@ def init_widgets_list():
                     discharge_char = '',
                     full_char = '=',
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},
-                    notify_below = 0.15,),
+                    notify_below = 0.3,),
 
                 widget.Sep(**sep()),
 

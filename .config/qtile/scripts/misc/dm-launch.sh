@@ -4,6 +4,7 @@
 
 # declare scripts description and location
 declare -a options=(
+    "Kill Process - killprocess.sh"
     "Update Cmus Library - cmus-update.sh"
     "View Keybinds (Term) - exportkeys.sh"
     "Logout Prompt - logout.sh"
