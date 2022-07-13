@@ -235,6 +235,8 @@ keys = [
 # TOGGLE FLOATING LAYOUT
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle Window Floating'),
 
+    # Key([mod], "z", lazy.screen.togglegroup()),
+
 # Cycle Floating Window
     # Key([mod], "period", float_cycle_forward, desc='Next Floating Window'),
     # Key([mod], "comma", float_cycle_backward, desc='Previous Floating Window'),

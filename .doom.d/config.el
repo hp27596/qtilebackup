@@ -2,8 +2,6 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
-;; Using newer byte compiled file
-;; (setq load-prefer-newer t)
 
 (use-package! tree-sitter
   :config
@@ -67,24 +65,9 @@
 (setq-default fill-column 90)
 
 ;; org2blog setup
-;; (require 'netrc)
-;; (setq blog (netrc-machine (netrc-parse "~/.netrc") "peter" t))
-;; (setq wpuser (netrc-get blog "login")
-;;       wppass (netrc-get blog "password"))
-;; (setq config `(("peter"
-;;                 :url "https://peterconfidential.com/xmlrpc.php"
-;;                 :username ,wpuser
-;;                 :password ,wppass)))
-;; (setq org2blog/wp-blog-alist config)
-
 (require 'org2blog)
 (add-hook 'org-mode-hook 'org2blog/wp-mode)
 (require 'auth-source)
-;;(customize-variable 'auth-source)
-;; (setq auth-sources '((:source "~/.emacs.d/.local/etc/authinfo")))
-;; (auth-source-forget-all-cached)
-
-;; (let* (credentials (auth-source-user-and-password "blog")))
 (defun org2blogcreds ()
         (let*   ((creds (nth 0 (auth-source-search :host "blog")))
                 (url (plist-get creds :port))
@@ -106,17 +89,25 @@
 (setq org-export-show-temporary-export-buffer nil)
 (setq org2blog/wp-image-upload t)
 
+(use-package dashboard
+  :init      ;; tweak dashboard config before loading it
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  ;; (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  ;; (setq dashboard-startup-banner "~/.config/doom/doom-emacs-dash.png")  ;; use custom image as banner
+  (setq dashboard-center-content nil) ;; set to 't' for centered content
+  (setq dashboard-items '((recents . 5)
+                          (agenda . 5 )
+                          (bookmarks . 5)
+                          (projects . 5)))
+                          ;; (registers . 5)))
+  :config
+  (dashboard-setup-startup-hook)
+  (dashboard-modify-heading-icons '((recents . "file-text")
+                                    (bookmarks . "book"))))
 
-;; doom dashboard doesn't display a whole lot information so I replace it with the dashboard package
-(require 'dashboard)
-(dashboard-setup-startup-hook)
-(defun new-dashboard ()
-  (interactive)
-  (switch-to-buffer dashboard-buffer-name)
-  (dashboard-mode)
-  (dashboard-insert-startupify-lists)
-  (dashboard-refresh-buffer))
 (setq doom-fallback-buffer-name "*dashboard*")
+
 
 ;; beacon scrolling
 (beacon-mode 1)
@@ -188,8 +179,6 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-;; .netrc hack to avoid personal information in dotfiles.
-;; (setq github (netrc-machine (netrc-parse "~/.netrc") "github" t))
 (setq user-full-name "Peter Nguyen"
       user-mail-address "peter@peterconfidential.com")
 
