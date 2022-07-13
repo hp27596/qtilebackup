@@ -13,8 +13,8 @@ declare -a options=(
     "Switch Audio Source - swau.sh"
     "General Info (Term) - timescript.sh"
     "Backup Dotfiles (Term) - qtilebu.sh"
-    "Open Password Manager - passmenu"
-    "Open Clean Disk Utility (Term)- ncdu"
+    "Open Password Manager - passmenu-otp.sh"
+    "Open Clean Disk Utility (Term) - ncdu"
 )
 
 # add number count
