@@ -1,3 +1,4 @@
+/home/hp/Music/Aerosmith - Dream On.webm
 /home/hp/Music/a-ha - Take On Me (Live From MTV Unplugged).mp3
 /home/hp/Music/Andrea Bocelli - Can't Help Falling In Love (HD).mp3
 /home/hp/Music/Barry White - Never Never Gonna Give Ya Up (Baby Driver Soundtrack).mp3
@@ -13,6 +14,7 @@
 /home/hp/Music/Marc Martel - My Way (Official Audio).mp3
 /home/hp/Music/Marié Digby - What I've Done (Acoustic Version).webm
 /home/hp/Music/[OFFICIAL VIDEO] Bohemian Rhapsody Pentatonix.mp3
+/home/hp/Music/Pentatonix - Attention.webm
 /home/hp/Music/Pentatonix - Havana.webm
 /home/hp/Music/Pentatonix - Imagine.webm
 /home/hp/Music/Sick Enough To Die - Mc Mong ft. Mellow (Lyrics).mp3
@@ -20,7 +22,10 @@
 /home/hp/Music/Take_Me_To_Church_-_Hozier_Cover_by_Jasmine_Thompson[ListenVid.com].mp3
 /home/hp/Music/The Jon Spencer Blues Explosion - Bellbottoms (Baby Driver Soundtrack).mp3
 /home/hp/Music/The Raspberries - Go All The Way.webm
+/home/hp/Music/The Rolling Stones - (I Can't Get No) Satisfaction.webm
+/home/hp/Music/The Rolling Stones - Start Me Up.webm
 /home/hp/Music/The Sound of Silence (Original Version from 1964).mp3
+/home/hp/Music/Three Days Grace - Somebody That I Used to Know.webm
 /home/hp/Music/Tove Lo - Habits (Stay High).webm
 /home/hp/Music/Travis Scott - The Plan (From the Motion Picture TENET - Official Audio).mp3
 /home/hp/Music/Valentina Lisitsa - Moonlight Sonata Op.27 No.2 Mov.1,2,3 (Beethoven).mp3

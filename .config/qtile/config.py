@@ -85,7 +85,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(myTerm), desc='Launch Terminal'),
     Key([mod], "t", lazy.spawn('thunar'), desc='Launch File Manager'),
     Key([mod], "m", lazy.spawn('env GDK_SCALE=2 steam'), desc='Launch Steam'),
-    Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/misc/logout.sh'), desc='Logout Menu'),
+    Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/misc/dm-logout.sh'), desc='Logout Menu'),
     Key([mod], "p", lazy.spawn(home + '/.config/qtile/scripts/togglepicom.sh'), desc='Toggle Picom Transparency'),
     Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-launch.sh"), desc='Dmenu Misc Script Launcher'),
     Key([mod], "i", lazy.spawn('clipmenu -fn "Ubuntu Mono:pixelsize=44" -i -l 15 -p "Choose Clipboard:"'), desc='Dmenu Clipboard'),
@@ -462,7 +462,7 @@ def init_widgets_list():
                 widget.Image(
                     margin = 3,
                     filename = '~/.config/qtile/icons/power2.png',
-                    mouse_callbacks = {'Button1': lazy.spawn('/home/hp/.config/qtile/scripts/logout.sh')},),
+                    mouse_callbacks = {'Button1': lazy.spawn('/home/hp/.config/qtile/scripts/misc/dm-logout.sh')},),
 
         ]
     return widgets_list

@@ -65,8 +65,9 @@ sudo systemctl start bluetooth cronie firewalld
 
 # dmenu fork
 cd ~
-git clone https://github.com/sbstnc/dmenu-ee
-cd dmenu-ee
+# git clone https://github.com/sbstnc/dmenu-ee
+git clone https://gitlab.com/dwt1/dmenu-distrotube.git
+cd dmenu-distrotube.git
 sudo make clean install
 cd ~
 

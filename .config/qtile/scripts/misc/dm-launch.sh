@@ -4,17 +4,18 @@
 
 # declare scripts description and location
 declare -a options=(
-    "Kill Process - killprocess.sh"
-    "Misc Search (Synonym, etc) - search.sh"
+    "Kill Process - dm-killprocess.sh"
+    "Misc Search (Synonym, etc) - dm-miscsearch.sh"
     "Update Cmus Library - cmus-update.sh"
     "View Keybinds (Term) - exportkeys.sh"
-    "Logout Prompt - logout.sh"
+    "Logout Prompt - dm-logout.sh"
     "Connect to Network (Term) - nmtui.sh"
-    "Switch Audio Source - swau.sh"
+    "Switch Audio Source - dm-switchaudio.sh"
     "General Info (Term) - timescript.sh"
     "Backup Dotfiles (Term) - qtilebu.sh"
-    "Open Password Manager - passmenu-otp.sh"
+    "Open Password Manager - dm-passmenu.sh"
     "Open Clean Disk Utility (Term) - ncdu"
+    "Word Autocompletion And Suggestion - dm-autocomplete.sh"
 )
 
 # add number count
