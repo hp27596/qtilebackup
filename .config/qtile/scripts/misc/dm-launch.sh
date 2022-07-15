@@ -6,6 +6,7 @@
 declare -a options=(
     "Kill Process - dm-killprocess.sh"
     "Misc Search (Synonym, etc) - dm-miscsearch.sh"
+    "Word Autocompletion And Suggestion - dm-autocomplete.sh"
     "Update Cmus Library - cmus-update.sh"
     "View Keybinds (Term) - exportkeys.sh"
     "Logout Prompt - dm-logout.sh"
@@ -15,7 +16,6 @@ declare -a options=(
     "Backup Dotfiles (Term) - qtilebu.sh"
     "Open Password Manager - dm-passmenu.sh"
     "Open Clean Disk Utility (Term) - ncdu"
-    "Word Autocompletion And Suggestion - dm-autocomplete.sh"
 )
 
 # add number count

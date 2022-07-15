@@ -5,17 +5,17 @@
 sink1=`pactl list sinks | grep "Sink #" | sed -n -e 's/Sink \#//p' | head -1` 
 
 
-chosen=$(echo -e "[Cancel]\nSpeaker\nHeadphones\nBluetooth" | dmenu -i)
+chosen=$(echo -e "1. Speaker\n2. Headphones\n3. Bluetooth" | dmenu -i -l 5 -p "Choose Audio Source:")
 
-if [[ $chosen = "Speaker" ]]
+if [[ $chosen = "1. Speaker" ]]
 then
 	pactl set-default-sink $sink1
 	pactl set-sink-port $sink1 analog-output-speaker
-elif [[ $chosen = "Headphones" ]]
+elif [[ $chosen = "2. Headphones" ]]
 then
 	pactl set-default-sink $sink1 
 	pactl set-sink-port $sink1 analog-output-headphones
-elif [[ $chosen = "Bluetooth" ]]
+elif [[ $chosen = "3. Bluetooth" ]]
 then 
 	sink3=`pactl list sinks | grep "Sink #" | sed -n -e 's/Sink \#//p' | tail -1`
 	pactl set-default-sink $sink3 
