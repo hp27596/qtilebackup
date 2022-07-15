@@ -88,7 +88,7 @@ keys = [
     Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/misc/dm-logout.sh'), desc='Logout Menu'),
     Key([mod], "p", lazy.spawn(home + '/.config/qtile/scripts/togglepicom.sh'), desc='Toggle Picom Transparency'),
     Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-launch.sh"), desc='Dmenu Misc Script Launcher'),
-    Key([mod], "i", lazy.spawn('clipmenu -fn "Ubuntu Mono:pixelsize=44" -i -l 15 -p "Choose Clipboard:"'), desc='Dmenu Clipboard'),
+    Key([mod], "i", lazy.spawn('clipmenu -i -l 15 -p "Choose Clipboard:"'), desc='Dmenu Clipboard'),
 
 # ALACRITTY KEYBINDS
     Key([mod], "n", lazy.spawn(myTerm + ' --class ranger,ranger -e ranger'), desc='Launch Ranger'),

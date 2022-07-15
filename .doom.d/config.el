@@ -166,16 +166,20 @@
 
 ;; Faster insert of source code tags
 (defun insert-begin-src()(interactive)(insert "#+begin_src "))
-(defun insert-end-src()(interactive)(insert "#+end_src "))
-
 (map! :leader
       :prefix "i"
       :desc "Insert Begin Src Snippet" "1" #'insert-begin-src)
 
+(defun insert-end-src()(interactive)(insert "#+end_src "))
 (map! :leader
       :prefix "i"
       :desc "Insert End Src Snippet" "2" #'insert-end-src)
 
+(defun insert-img-html-attr()(interactive)(insert "#+ATTR_HTML: :alt  :title
+#+CAPTION: "))
+(map! :leader
+      :prefix "i"
+      :desc "Insert blog html attr" "3" #'insert-img-html-attr)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.

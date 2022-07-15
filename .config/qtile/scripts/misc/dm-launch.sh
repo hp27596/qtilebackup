@@ -18,6 +18,9 @@ declare -a options=(
     "Open Clean Disk Utility (Term) - ncdu"
 )
 
+# script folder path
+scrpath=$HOME/.config/qtile/scripts/misc/
+
 # add number count
 cnt=${#options[@]}
 for ((i=0;i<cnt;i++)); do
@@ -31,14 +34,14 @@ choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 20 -p 'Choose Script:')
 if [[ "$choice" == *"Term"* ]]; then
     scr=$(printf "$choice" | awk '{print $NF}')
     if [[ "$choice" == *".sh"* ]]; then
-        alacritty -e $HOME/.config/qtile/scripts/misc/"$scr"
+        alacritty -e "$scrpath""$scr"
     else
         alacritty -e $scr
     fi
 elif [ "$choice" ]; then
     scr=$(printf "$choice" | awk '{print $NF}')
     if [[ "$choice" == *".sh"* ]]; then
-        bash $HOME/.config/qtile/scripts/misc/"$scr"
+        bash "$scrpath""$scr"
     else
         bash $scr
     fi
