@@ -31,8 +31,11 @@ sleep 1
 tmux kill-server &
 alacritty --class tmux,tmux -e tmux &
 
-python ~/pyscripts/nucleartoast.py &
+sh ~/.config/qtile/scripts/batterynotification.sh &
 
-run nuclear &
+# python ~/pyscripts/nucleartoast.py &
 
+# run nuclear &
+
+sleep 3
 emacsclient -c -a "emacs" &

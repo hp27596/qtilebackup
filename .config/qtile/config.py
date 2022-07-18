@@ -14,7 +14,24 @@ mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
-floating_window_index = 0
+# floating_window_index = 0
+
+win_list = []
+def toggle_stick_win(qtile):
+    global win_list
+    if qtile.current_window in win_list:
+        win_list.remove(qtile.current_window)
+    else:
+        win_list.append(qtile.current_window)
+def unstick_win(qtile): #used to kill sticky window
+    global win_list
+    win_list.remove(qtile.current_window)
+
+@hook.subscribe.setgroup
+def move_win():
+    for w in win_list:
+        w.togroup(qtile.current_group.name)
+        qtile.next_window()
 
 # Cycle Floating Window
 # def float_cycle(qtile, forward: bool):
@@ -48,38 +65,35 @@ floating_window_index = 0
 
 @lazy.function
 def float_to_front(qtile):
-    """
-    Bring all floating windows of the group to front
-    """
-    global floating_windows
-    floating_windows = []
-    for window in qtile.currentGroup.windows:
+    for window in qtile.current_group.windows:
         if window.floating:
             window.cmd_bring_to_front()
-            floating_windows.append(window)
-    floating_windows[-1].cmd_focus()
 
-@lazy.function
-def window_to_prev_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+# @lazy.function
+# def window_to_prev_group(qtile):
+#     if qtile.currentWindow is not None:
+#         i = qtile.groups.index(qtile.currentGroup)
+#         qtile.currentWindow.togroup(qtile.groups[i - 1].name)
 
-@lazy.function
-def window_to_next_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+# @lazy.function
+# def window_to_next_group(qtile):
+#     if qtile.currentWindow is not None:
+#         i = qtile.groups.index(qtile.currentGroup)
+#         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
 myTerm = "alacritty" # My terminal of choice
 
 #STARTKEYS
 keys = [
 
+# Custom function keys
+    Key([mod], "y", lazy.function(toggle_stick_win), desc="Toggle Sticky Window"),
+    Key([mod], "period", lazy.window.bring_to_front()),
+
 # SUPER + FUNCTION KEYS
     Key([mod], "g", lazy.spawn('google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --disable-features=UseChromeOSDirectVideoDecoder --gtk-version=4'), desc='Launch Google Chrome'),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc='Toggle Window Fullscreen'),
-    Key([mod], "q", lazy.window.kill(), desc='Kill Current Window'),
+    Key([mod], "q", lazy.function(unstick_win), lazy.window.kill(), desc='Kill Current Window'),
     Key([mod], "v", lazy.spawn('pavucontrol'), desc='Launch Pulseaudio Volume Control'),
     Key([mod], "e", lazy.spawn('emacsclient -c -a "emacs"'), desc='Launch Emacs Client'),
     Key([mod], "Return", lazy.spawn(myTerm), desc='Launch Terminal'),
@@ -87,13 +101,14 @@ keys = [
     Key([mod], "m", lazy.spawn('env GDK_SCALE=2 steam'), desc='Launch Steam'),
     Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/misc/dm-logout.sh'), desc='Logout Menu'),
     Key([mod], "p", lazy.spawn(home + '/.config/qtile/scripts/togglepicom.sh'), desc='Toggle Picom Transparency'),
-    Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-launch.sh"), desc='Dmenu Misc Script Launcher'),
+    Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-scriptlauncher.sh"), desc='Dmenu Misc Script Launcher'),
     Key([mod], "i", lazy.spawn('clipmenu -i -l 15 -p "Choose Clipboard:"'), desc='Dmenu Clipboard'),
 
 # ALACRITTY KEYBINDS
     Key([mod], "n", lazy.spawn(myTerm + ' --class ranger,ranger -e ranger'), desc='Launch Ranger'),
     Key([mod], "b", lazy.spawn(myTerm + ' --class sysmon,sysmon -e btop'), desc='Launch System Monitor'),
-    Key([mod], "r", lazy.spawn(myTerm + " --class sway-launcher,sway-launcher -e sway-launcher-desktop"), desc='Open App Launcher TUI'),
+    # Key([mod], "r", lazy.spawn(myTerm + " --class sway-launcher,sway-launcher -e sway-launcher-desktop"), desc='Open App Launcher TUI'),
+    Key([mod], "r", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-frecency")),
     Key([mod], "u", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh"), desc='Connect to Wifi'), #fixes nmtui resizing issue
 
 # SUPER + SHIFT KEYS
@@ -150,10 +165,26 @@ keys = [
     Key([mod], "Down", lazy.layout.down(), desc='Focus Window Down'),
     Key([mod], "Left", lazy.layout.left(), desc='Focus Window Left'),
     Key([mod], "Right", lazy.layout.right(), desc='Focus Window Right'),
-    Key([mod], "k", lazy.layout.up(), desc='Focus Window Up'),
-    Key([mod], "j", lazy.layout.down(), desc='Focus Window Down'),
-    Key([mod], "h", lazy.layout.left(), desc='Focus Window Left'),
-    Key([mod], "l", lazy.layout.right(), desc='Focus Window Right'),
+# Material Shell style bindings
+    # Key([mod], "l", lazy.screen.next_group(), desc='Next Workspace'),
+    # Key([mod], "h", lazy.screen.prev_group(), desc='Previous Workspace'),
+    # Key([mod], "k", lazy.group.next_window(), lazy.function(float_to_front), desc='Focus Next Window'),
+    # Key([mod], "j", lazy.group.prev_window(), lazy.function(float_to_front), desc='Focus Previous Window'),
+
+# dwm style
+    Key([mod], "k", lazy.group.next_window(), float_to_front, desc='Focus Next Window'),
+    Key([mod], "j", lazy.group.prev_window(), float_to_front, desc='Focus Previous Window'),
+
+    Key([mod], "l", lazy.layout.grow_main(), desc='Increase Master size'),
+    Key([mod], "h", lazy.layout.shrink_main(), desc='Decrease Master size'),
+
+
+
+# Classic style bindings
+    # Key([mod], "k", lazy.layout.up(), desc='Focus Window Up'),
+    # Key([mod], "j", lazy.layout.down(), desc='Focus Window Down'),
+    # Key([mod], "h", lazy.layout.left(), desc='Focus Window Left'),
+    # Key([mod], "l", lazy.layout.right(), desc='Focus Window Right'),
 
 # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, "control"], "l",
@@ -237,9 +268,6 @@ keys = [
 
     # Key([mod], "z", lazy.screen.togglegroup()),
 
-# Cycle Floating Window
-    # Key([mod], "period", float_cycle_forward, desc='Next Floating Window'),
-    # Key([mod], "comma", float_cycle_backward, desc='Previous Floating Window'),
 
 # Change group
     Key([mod], "Tab", lazy.screen.next_group(), desc='Next Workspace'),
@@ -416,8 +444,8 @@ def init_widgets_list():
                     charge_char = '',
                     discharge_char = '',
                     full_char = '=',
-                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},
-                    notify_below = 0.3,),
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},),
+                    # notify_below = 0.2,), #this doesn't work for some reasons. I'm using my own shell script.
 
                 widget.Sep(**sep()),
 
@@ -448,7 +476,7 @@ def init_widgets_list():
                 widget.Sep(**sep()),
 
                 widget.Wttr(
-                    format = '%l:%c%t',
+                    format = '%c%t (%f)', #%l:
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     location = {"":""},),
 
@@ -591,5 +619,5 @@ floating_layout = layout.Floating(float_rules=[
 ], fullscreen_border_width = 0, border_width = 0)
 
 auto_fullscreen = True
-focus_on_window_activation = "focus" # or smart
+focus_on_window_activation = "smart" # or focus
 wmname = "Qtile" # LG3D if Java applications return errors

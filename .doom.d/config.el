@@ -19,7 +19,8 @@
 (define-key evil-normal-state-map "U" 'evil-redo)
 (define-key evil-normal-state-map "\C-z" 'evil-undo)
 (define-key evil-insert-state-map "\C-z" 'evil-undo)
-(define-key evil-insert-state-map "\C-v" 'evil-paste-before)
+(defun evil-paste-before-insert ()(interactive)(evil-paste-before t)(right-char))
+(define-key evil-insert-state-map "\C-v" 'evil-paste-before-insert)
 ;; don't auto complete current sentence when enter
 (define-key evil-insert-state-map "\M-ENT" 'vertico-exit-input)
 ;; visual line navigation on arrow keys and normal lines on jk
