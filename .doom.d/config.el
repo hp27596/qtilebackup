@@ -159,6 +159,7 @@
 #+PERMALINK:
 #+CATEGORY:
 #+TAGS:
+#+TOC: headlines 1
 #+TITLE:
 #+DESCRIPTION:
 #+AUTHOR: Hp")

@@ -16,6 +16,7 @@ declare -a options=(
     "Backup Dotfiles (Term) - qtilebu.sh"
     "Open Password Manager - dm-passmenu.sh"
     "Open Clean Disk Utility (Term) - ncdu"
+    "Refresh App Launcher Cache - dm-frecency-flush.sh"
 )
 
 # script folder path
@@ -40,6 +41,7 @@ if [[ "$choice" == *"Term"* ]]; then
     fi
 elif [ "$choice" ]; then
     scr=$(printf "$choice" | awk '{print $NF}')
+    echo $scr
     if [[ "$choice" == *".sh"* ]]; then
         bash "$scrpath""$scr"
     else

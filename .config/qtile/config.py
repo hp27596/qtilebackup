@@ -41,32 +41,32 @@ def float_to_front(qtile):
 @lazy.function
 def move_floating_up(qtile):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(0, -80)
+        qtile.current_window.cmd_move_floating(0, -90)
 
 @lazy.function
 def move_floating_down(qtile):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(0, 80)
+        qtile.current_window.cmd_move_floating(0, 90)
 
 @lazy.function
 def move_floating_right(qtile):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(80, 0)
+        qtile.current_window.cmd_move_floating(100, 0)
 
 @lazy.function
 def move_floating_left(qtile):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(-80, 0)
+        qtile.current_window.cmd_move_floating(-100, 0)
 
 @lazy.function
 def grow_floating(qtile):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_resize_floating(80, 80)
+        qtile.current_window.cmd_resize_floating(100, 100)
 
 @lazy.function
 def shrink_floating(qtile):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_resize_floating(-80, -80)
+        qtile.current_window.cmd_resize_floating(-100, -100)
 
 
 myTerm = "alacritty" # My terminal of choice
