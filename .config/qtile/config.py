@@ -31,37 +31,7 @@ def unstick_win(qtile): #used to kill sticky window
 def move_win():
     for w in win_list:
         w.togroup(qtile.current_group.name)
-        qtile.next_window()
-
-# Cycle Floating Window
-# def float_cycle(qtile, forward: bool):
-#     global floating_window_index
-#     floating_windows = []
-#     for window in qtile.current_group.windows:
-#         if window.floating:
-#             floating_windows.append(window)
-#     if not floating_windows:
-#         return
-#     floating_window_index = min(floating_window_index, len(floating_windows) -1)
-#     if forward:
-#         floating_window_index += 1
-#     else:
-#         floating_window_index += 1
-#     if floating_window_index >= len(floating_windows):
-#         floating_window_index = 0
-#     if floating_window_index < 0:
-#         floating_window_index = len(floating_windows) - 1
-#     win = floating_windows[floating_window_index]
-#     win.cmd_bring_to_front()
-#     win.cmd_focus()
-
-# @lazy.function
-# def float_cycle_backward(qtile):
-#     float_cycle(qtile, False)
-
-# @lazy.function
-# def float_cycle_forward(qtile):
-#     float_cycle(qtile, True)
+        subprocess.Popen("qtile cmd-obj -o group -f prev_window", shell=True) # I want qtile to not focus on the sticky window by default, but couldn't find a better way to call this funciton, so this is some hacky shit.
 
 @lazy.function
 def float_to_front(qtile):
@@ -69,17 +39,36 @@ def float_to_front(qtile):
         if window.floating:
             window.cmd_bring_to_front()
 
-# @lazy.function
-# def window_to_prev_group(qtile):
-#     if qtile.currentWindow is not None:
-#         i = qtile.groups.index(qtile.currentGroup)
-#         qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+@lazy.function
+def move_floating_up(qtile):
+    if qtile.current_window.floating:
+        qtile.current_window.cmd_move_floating(0, -80)
 
-# @lazy.function
-# def window_to_next_group(qtile):
-#     if qtile.currentWindow is not None:
-#         i = qtile.groups.index(qtile.currentGroup)
-#         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+@lazy.function
+def move_floating_down(qtile):
+    if qtile.current_window.floating:
+        qtile.current_window.cmd_move_floating(0, 80)
+
+@lazy.function
+def move_floating_right(qtile):
+    if qtile.current_window.floating:
+        qtile.current_window.cmd_move_floating(80, 0)
+
+@lazy.function
+def move_floating_left(qtile):
+    if qtile.current_window.floating:
+        qtile.current_window.cmd_move_floating(-80, 0)
+
+@lazy.function
+def grow_floating(qtile):
+    if qtile.current_window.floating:
+        qtile.current_window.cmd_resize_floating(80, 80)
+
+@lazy.function
+def shrink_floating(qtile):
+    if qtile.current_window.floating:
+        qtile.current_window.cmd_resize_floating(-80, -80)
+
 
 myTerm = "alacritty" # My terminal of choice
 
@@ -88,7 +77,12 @@ keys = [
 
 # Custom function keys
     Key([mod], "y", lazy.function(toggle_stick_win), desc="Toggle Sticky Window"),
-    Key([mod], "period", lazy.window.bring_to_front()),
+    Key([mod, mod2], "period", grow_floating, desc="Grow Floating Window"),
+    Key([mod, mod2], "comma", shrink_floating, desc="Shrink Floating Window"),
+    Key([mod], "period", move_floating_right, desc="Move Floating Window Right"),
+    Key([mod], "comma", move_floating_left, desc="Move Floating Window Left"),
+    Key([mod, "shift"], "period", move_floating_down, desc="Move Floating Window Down"),
+    Key([mod, "shift"], "comma", move_floating_up, desc="Move Floating Window Up"),
 
 # SUPER + FUNCTION KEYS
     Key([mod], "g", lazy.spawn('google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --disable-features=UseChromeOSDirectVideoDecoder --gtk-version=4'), desc='Launch Google Chrome'),
@@ -107,26 +101,17 @@ keys = [
 # ALACRITTY KEYBINDS
     Key([mod], "n", lazy.spawn(myTerm + ' --class ranger,ranger -e ranger'), desc='Launch Ranger'),
     Key([mod], "b", lazy.spawn(myTerm + ' --class sysmon,sysmon -e btop'), desc='Launch System Monitor'),
-    # Key([mod], "r", lazy.spawn(myTerm + " --class sway-launcher,sway-launcher -e sway-launcher-desktop"), desc='Open App Launcher TUI'),
-    Key([mod], "r", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-frecency")),
+    Key([mod], "r", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-frecency"), desc='Program Launcher'),
     Key([mod], "u", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh"), desc='Connect to Wifi'), #fixes nmtui resizing issue
 
 # SUPER + SHIFT KEYS
-
-    # Key([mod, "shift"], "Return", lazy.spawn('thunar')),
     Key([mod, "shift"], "r", lazy.restart(), desc='Restart Qtile'),
     Key([mod, "control"], "r", lazy.restart(), desc='Restart Qtile'),
-    # Key([mod, "shift"], "x", lazy.shutdown(), desc='Logout of Qtile'),
 
 # CONTROL + ALT KEYS
 
     # Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
     Key(["mod1", "control"], "l", lazy.spawn('betterlockscreen -l'), desc='Lock the Screen'),
-
-# CONTROL + SHIFT KEYS
-
-    # Key([mod2, "shift"], "Escape", lazy.spawn(myTerm + ' -e htop')),
-
 
 # SCREENSHOTS
 
@@ -160,114 +145,33 @@ keys = [
     Key([mod, "shift"], "n", lazy.layout.normalize(), desc='Normalize Layout'),
     Key([mod], "space", lazy.next_layout(), desc='Toggle Next Layout'),
 
-# CHANGE FOCUS
-    Key([mod], "Up", lazy.layout.up(), desc='Focus Window Up'),
-    Key([mod], "Down", lazy.layout.down(), desc='Focus Window Down'),
-    Key([mod], "Left", lazy.layout.left(), desc='Focus Window Left'),
-    Key([mod], "Right", lazy.layout.right(), desc='Focus Window Right'),
-# Material Shell style bindings
-    # Key([mod], "l", lazy.screen.next_group(), desc='Next Workspace'),
-    # Key([mod], "h", lazy.screen.prev_group(), desc='Previous Workspace'),
-    # Key([mod], "k", lazy.group.next_window(), lazy.function(float_to_front), desc='Focus Next Window'),
-    # Key([mod], "j", lazy.group.prev_window(), lazy.function(float_to_front), desc='Focus Previous Window'),
-
-# dwm style
+# I only use Monadtall/wide layout and max layout 99% of the time, so this keybindings reflect that.
     Key([mod], "k", lazy.group.next_window(), float_to_front, desc='Focus Next Window'),
     Key([mod], "j", lazy.group.prev_window(), float_to_front, desc='Focus Previous Window'),
+    Key([mod], "l", lazy.layout.grow_main(), desc='Increase Master Size'),
+    Key([mod], "h", lazy.layout.shrink_main(), desc='Decrease Master Size'),
 
-    Key([mod], "l", lazy.layout.grow_main(), desc='Increase Master size'),
-    Key([mod], "h", lazy.layout.shrink_main(), desc='Decrease Master size'),
-
-
-
-# Classic style bindings
-    # Key([mod], "k", lazy.layout.up(), desc='Focus Window Up'),
-    # Key([mod], "j", lazy.layout.down(), desc='Focus Window Down'),
-    # Key([mod], "h", lazy.layout.left(), desc='Focus Window Left'),
-    # Key([mod], "l", lazy.layout.right(), desc='Focus Window Right'),
-
-# RESIZE UP, DOWN, LEFT, RIGHT
-    Key([mod, "control"], "l",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        desc='Resize Window Further Right'),
-    Key([mod, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        desc='Resize Window Further Right'),
-    Key([mod, "control"], "h",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        desc='Resize Window Further Left'),
-    Key([mod, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        desc='Resize Window Further Left'),
-    Key([mod, "control"], "k",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        desc='Resize Window Further Up'),
-    Key([mod, "control"], "Up",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        desc='Resize Window Further Up'),
-    Key([mod, "control"], "j",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        desc='Resize Window Further Down'),
-    Key([mod, "control"], "Down",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        desc='Resize Window Further Down'),
+    Key([mod], "Down", lazy.group.next_window(), float_to_front, desc='Focus Next Window'),
+    Key([mod], "Up", lazy.group.prev_window(), float_to_front, desc='Focus Previous Window'),
+    Key([mod], "Right", lazy.layout.grow_main(), desc='Increase Master Size'),
+    Key([mod], "Left", lazy.layout.shrink_main(), desc='Decrease Master Size'),
 
 # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip(), desc='Flip Layout'),
 
-# FLIP LAYOUT FOR BSP
-    Key([mod, "mod1"], "k", lazy.layout.flip_up(), desc='Flip Layout Up'),
-    Key([mod, "mod1"], "j", lazy.layout.flip_down(), desc='Flip Layout Down'),
-    Key([mod, "mod1"], "h", lazy.layout.flip_left(), desc='Flip Layout Left'),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right(), desc='Flip Layout Right'),
-
-# MOVE WINDOWS UP OR DOWN BSP LAYOUT
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc='Move Window Up'),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc='Move Window Down'),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc='Move Window Left'),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc='Move Window Right'),
-
-### Treetab controls
-    # Key([mod, "control"], "k",
-    #     lazy.layout.section_up(),
-    #     desc='Move up a section in treetab'
-    #     ),
-    # Key([mod, "control"], "j",
-    #     lazy.layout.section_down(),
-    #     desc='Move down a section in treetab'
-    #     ),
-
 # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
-    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc='Move Window Up'),
-    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc='Move Window Down'),
-    Key([mod, "shift"], "Left", lazy.layout.swap_left(), desc='Move Window Left'),
-    Key([mod, "shift"], "Right", lazy.layout.swap_right(), desc='Move Window Right'),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_up(), desc='Move Window Up The Stack'),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_down(), desc='Move Window Down The Stack'),
+    Key([mod, "shift"], "l", lazy.layout.grow(), desc='Grow Window Size'),
+    Key([mod, "shift"], "h", lazy.layout.shrink(), desc='Shrink Window Size'),
+
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc='Move Window Up The Stack'),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc='Move Window Down The Stack'),
+    Key([mod, "shift"], "Right", lazy.layout.grow(), desc='Grow Window Size'),
+    Key([mod, "shift"], "Left", lazy.layout.shrink(), desc='Shrink Window Size'),
 
 # TOGGLE FLOATING LAYOUT
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle Window Floating'),
-
-    # Key([mod], "z", lazy.screen.togglegroup()),
-
 
 # Change group
     Key([mod], "Tab", lazy.screen.next_group(), desc='Next Workspace'),
@@ -303,6 +207,22 @@ for i in groups:
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen(), desc='Move Window to Workspace {}'.format(i.name)),
     ])
 
+def init_layout_theme():
+    return {"margin":10,
+            "border_width":2,
+            "border_focus": "#6790eb",
+            "border_normal": "#2F343F",
+            }
+
+layout_theme = init_layout_theme()
+
+layouts = [
+    layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
+    layout.Matrix(**layout_theme),
+    layout.Max(**layout_theme),
+    layout.Floating(**layout_theme),
+]
 
 # COLORS FOR THE BAR
 def init_colors():
@@ -332,40 +252,6 @@ def init_colors():
             ["#ffd47e", "#ffd47e"]] #23
 
 colors = init_colors()
-
-def init_layout_theme():
-    return {"margin":10,
-            "border_width":2,
-            "border_focus": "#6790eb",
-            "border_normal": "#2F343F",
-            }
-
-layout_theme = init_layout_theme()
-
-
-layouts = [
-    layout.MonadTall(**layout_theme),
-    layout.MonadWide(**layout_theme),
-    # layout.Tile(**layout_theme),
-    # layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
-    # layout.RatioTile(**layout_theme),
-    # layout.Spiral(**layout_theme),
-    # layout.Columns(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.Floating(**layout_theme),
-    # layout.Stack(**layout_theme),
-    # layout.TreeTab(
-    #     sections=['FIRST', 'SECOND'],
-    #     bg_color = '#141414',
-    #     active_bg = '#0000ff',
-    #     inactive_bg = '#1e90ff',
-    #     padding_y =5,
-    #     section_top =10,
-    #     panel_width = 280),
-    # layout.VerticalTile(**layout_theme),
-    # layout.Zoomy(**layout_theme)
-]
 
 # Default Separator format
 def sep():
@@ -477,6 +363,7 @@ def init_widgets_list():
 
                 widget.Wttr(
                     format = '%c%t (%f)', #%l:
+                    update_interval = 1200,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     location = {"":""},),
 
@@ -612,7 +499,6 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='Cairo-dock'),
     Match(wm_class='cairo-dock'),
     Match(title='Save File'),
-    Match(wm_class='sway-launcher'),
     Match(wm_class='qutebrowser'),
     # Match(wm_class='caffeine'),
 
