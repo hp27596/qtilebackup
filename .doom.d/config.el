@@ -184,6 +184,10 @@
       :prefix "i"
       :desc "Insert blog html attr" "3" #'insert-img-html-attr)
 
+(map! :leader
+      :prefix "i"
+      :desc "Org-emphasize" "z" #'org-emphasize)
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Peter Nguyen"

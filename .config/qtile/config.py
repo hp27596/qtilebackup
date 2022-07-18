@@ -360,7 +360,7 @@ def init_widgets_list():
 
                 widget.Wttr(
                     format = '%c%t (%f)', #%l:
-                    update_interval = 1200,
+                    # update_interval = 1200,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
                     location = {"":""},),
 
