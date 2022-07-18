@@ -107,6 +107,7 @@
   (dashboard-modify-heading-icons '((recents . "file-text")
                                     (bookmarks . "book"))))
 
+(dashboard-refresh-buffer)
 (setq doom-fallback-buffer-name "*dashboard*")
 
 

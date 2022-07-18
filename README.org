@@ -1,9 +1,16 @@
 #+title: My backed up qtile and other config files
 #+author: Hp
 
+
+
 This is my dotfiles for my whole qtile system, including dots for tools I used.
 
 [[2022-07-11_16-31.png]]
+
+** TOC :TOC:
+  - [[#why-is-everything-so-large][Why is everything so large?]]
+  - [[#need-to-know][Need to know]]
+  - [[#extras][Extras]]
 
 ** Why is everything so large?
 

@@ -25,6 +25,8 @@
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! visual-fill-column)
+(package! dashboard)
+;; (package! toc-org)
 ;; (package! eww)
 ;; (package! minimap)
 ;; (package! rotate)
