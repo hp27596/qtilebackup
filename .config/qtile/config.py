@@ -110,7 +110,7 @@ keys = [
 # CONTROL + ALT KEYS
 
     # Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
-    Key(["mod1", "control"], "l", lazy.spawn('betterlockscreen -l'), desc='Lock the Screen'),
+    Key(["mod1", "control"], "l", lazy.spawn('slock'), desc='Lock the Screen'),
 
 # SCREENSHOTS
 

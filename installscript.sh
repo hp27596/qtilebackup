@@ -37,7 +37,7 @@ systemctl --user --daemon-reload
 systemctl --user enable pulseaudio pulseaudio.socket
 
 # Install personal packages
-yay -S interception-tools nextcloud-client ranger flameshot ncdu steam ardour fortune-mod aircrack-ng bully reaaver tmux libreoffice-fresh metasploit cowpatty wireshark termshark macchanger pixiewps john android-sdk-platform-tools nerd-fonts-jetbrains-mono krita xorg-fonts gucharmap qbittorrent rustscan cpupower-gui wine-staging bottom vlc tldr lutris fcitx5 fcitx5-gtk fcitx5-qt fcitx5-unikey kcm-fcitx5 btop clipmenu gparted pass pass-otp sxiv scrcpy qutebrowser trash-cli kdeconnect zathura zathura-pdf-mupdf
+yay -S interception-tools nextcloud-client ranger flameshot ncdu steam ardour fortune-mod aircrack-ng bully reaaver tmux libreoffice-fresh metasploit cowpatty wireshark termshark macchanger pixiewps john android-sdk-platform-tools nerd-fonts-jetbrains-mono krita xorg-fonts gucharmap qbittorrent rustscan cpupower-gui wine-staging bottom vlc tldr lutris fcitx5 fcitx5-gtk fcitx5-qt fcitx5-unikey kcm-fcitx5 btop clipmenu gparted pass pass-otp sxiv scrcpy qutebrowser trash-cli kdeconnect zathura zathura-pdf-mupdf pulseaudio-equalizer-ladspa
 
 # Install AUR packages
 yay -S auto-cpufreq-git betterlockscreen caffeine-ng cava cmus-notify google-chrome i3lock-color material-black-colors-theme ncmatrix nerd-fonts-ubuntu-mono pyrit python-pulsectl ticker timeshift-bin noto-fonts-emoji-apple mangohud-git ttf-unifont ttf-font-awesome otf-font-awesome protonvpn goverlay ttf-ubuntu-font-family ttf-ms-fonts nuclear-player-bin routersploit-git
