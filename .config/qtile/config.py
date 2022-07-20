@@ -30,6 +30,7 @@ def unstick_win(qtile): #used to kill sticky window
 def move_win():
     for w in win_list:
         w.togroup(qtile.current_group.name)
+        # qtile.current_group.focus_back() #testing
         subprocess.Popen("qtile cmd-obj -o group -f prev_window", shell=True) # I want qtile to not focus on the sticky window by default, but couldn't find a better way to call this funciton, so this is some hacky shit.
 
 @lazy.function
@@ -68,6 +69,12 @@ def shrink_floating(qtile):
     if qtile.current_window.floating:
         qtile.current_window.cmd_resize_floating(-100, -100)
 
+def toggle_group(qtile, group_name):
+    if group_name == qtile.current_screen.group.name:
+        return qtile.current_screen.set_group(qtile.current_screen.previous_group)
+    for i, group in enumerate(qtile.groups):
+        if group_name == group.name:
+            return qtile.current_screen.set_group(qtile.groups[i])
 
 myTerm = "alacritty" # My terminal of choice
 
@@ -75,6 +82,7 @@ myTerm = "alacritty" # My terminal of choice
 keys = [
 
 # Custom function keys
+    Key([mod], "a", toggle_group),
     Key([mod], "y", lazy.function(toggle_stick_win), desc="Toggle Sticky Window"),
     Key([mod, mod2], "period", grow_floating, desc="Grow Floating Window"),
     Key([mod, mod2], "comma", shrink_floating, desc="Shrink Floating Window"),
@@ -116,8 +124,6 @@ keys = [
 
     Key([], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures'), desc='Capture Current Screen'),
     Key([mod2], "Print", lazy.spawn('flameshot gui'), desc='Capture Part of Screen'),
-
-# MULTIMEDIA KEYS
 
 # INCREASE/DECREASE BRIGHTNESS
     Key([], "XF86MonBrightnessUp", lazy.spawn(home + "/.config/qtile/scripts/extbright.sh up")),
@@ -198,7 +204,7 @@ for i in groups:
     keys.extend([
 
 #CHANGE WORKSPACES
-        Key([mod], i.name, lazy.group[i.name].toscreen(), desc='Switch to Workspace {}'.format(i.name)),
+        Key([mod], i.name, lazy.function(toggle_group, i.name), desc='Switch to Workspace {}'.format(i.name)),
 
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen(), desc='Move Window to Workspace {}'.format(i.name)),
@@ -430,10 +436,10 @@ def assign_app_group(client):
     d["3"] = ["crx_fkpbmjlkacnnbncjojlbhceofjnapopf", "google-chrome"]
     d["4"] = ["kdenlive"]
     d["5"] = ["Steam"]
-    d["6"] = ["tmux", ]
-    d["7"] = ["thunar", "sysmon", "ranger"]
-    d["8"] = ["telegram-desktop"]
-    d["9"] = ["crx_agimnkijcaahngcdmfeangaknmldooml","nuclear"]
+    d["6"] = ["tmux", "nuclear", "crx_agimnkijcaahngcdmfeangaknmldooml",]
+    d["7"] = ["thunar", "ranger"]
+    d["8"] = ["sysmon"]
+    d["9"] = ["telegram-desktop", ]
     d["0"] = []
     ##########################################################
     wm_class = client.window.get_wm_class()[0]

@@ -17,6 +17,7 @@ declare -a options=(
     "Open Password Manager - dm-passmenu.sh"
     "Open Clean Disk Utility (Term) - ncdu"
     "Refresh App Launcher Cache - dm-frecency-flush.sh"
+    "Open Dotfiles Chooser - dm-opendot.sh"
 )
 
 # script folder path

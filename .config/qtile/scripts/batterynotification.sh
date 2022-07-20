@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+state=$(ps aux | grep batterynotification.sh | grep -v grep)
+
+if [ $state != '' ]; then
+    return 1
+fi
+
 full_notified=false
 low_notified=false
 empty_notified=false

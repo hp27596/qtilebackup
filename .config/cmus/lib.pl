@@ -165,35 +165,89 @@
 /home/hp/Music/PostmodernJukebox/[YT2mp3.info] - Who Wants to Live Forever - Queen (_'West Side Story_' Style Cover) ft. Morgan James (320kbps).mp3
 /home/hp/Music/JFla/[YT2mp3.info] - You Raise Me Up ( cover by J.Fla ) (320kbps).mp3
 /home/hp/Music/[YT2mp3.info] - __소녀__ (A Little Girl) by 오혁 (OH HYUK) Lyrics MV (320kbps).mp3
+/home/hp/Music/FLACs/Take On Me MTV Unplugged_ - A-ha.flac
 /home/hp/Music/EmOiHaNoiPho-BangKieu-3145883.mp3
+/home/hp/Music/FLACs/Never Never Gonna Give You Up - Barry Wh.flac
+/home/hp/Music/FLACs/Bad Guy - Billie Eilish.flac
+/home/hp/Music/FLACs/Lovely - Billie Eilish_ Khalid.flac
 /home/hp/Music/It's My Life-Bon Jovi.mp3
+/home/hp/Music/FLACs/havana__camila-cabello__1000kbps____.flac
+/home/hp/Music/FLACs/Something About Us - Daft Punk.flac
+/home/hp/Music/FLACs/Harder_ Better_ Faster_ Stronger - Daft.flac
+/home/hp/Music/FLACs/Touch - Daft Punk_ Paul Williams.flac
 /home/hp/Music/Touch - Daft Punk_ Paul Williams.mp3
+/home/hp/Music/FLACs/Get Lucky - Daft Punk_ Pharrell Williams.flac
 /home/hp/Music/Minh Yeu Nhau Yeu Nhau Binh Ye... - Dinh Huong Ha Anh Tuan (NhacPro.net).mp3
+/home/hp/Music/FLACs/Freak - Doja Cat.flac
 /home/hp/Music/HotelCalifornia-Eagles_38w3_2.mp3
 /home/hp/Music/CantHelpFallinginLove-ElvisPresley-2902835.mp3
 /home/hp/Music/WalkOnWater-EminemBeyonce-5345197.mp3
 /home/hp/Music/SauTatCa-ERIKST319-4301357.mp3
+/home/hp/Music/FLACs/Bring Me To Life - Evanescence.flac
 /home/hp/Music/Whered You Go - Fort Minor [NCT 33634236251626562500].mp3
 /home/hp/Music/MyWay-FrankSinatra-3042173.mp3
+/home/hp/Music/FLACs/Sweet Child O_ Mine - Guns N_ Roses.flac
 /home/hp/Music/Sweet Child O Mine - Guns N Roses (NhacPro.net).mp3
+/home/hp/Music/can_t help falling in love - Haley Reinh.mp3
 /home/hp/Music/CantHelpFallingInLoveWithYou-HaleyReinhart-4160141.mp3
+/home/hp/Music/PostmodernJukebox/Habits - Haley Reinhart.mp3
 /home/hp/Music/Em Khong Quay Ve - Hoang Ton Yanbi.mp3
+/home/hp/Music/FLACs/Twenty-five_ twenty-one 25th - Jaurim.flac
 /home/hp/Music/Dung Nhu Thoi Quen - JayKii_ Sara Luu.mp3
+/home/hp/Music/FLACs/Attention - J_Fla.flac
+/home/hp/Music/FLACs/Wake Me Up When September Ends - J_Fla.flac
+/home/hp/Music/FLACs/Love Of My Life - J_Fla.flac
+/home/hp/Music/FLACs/Day Night - Jung Seung Hwan.flac
+/home/hp/Music/FLACs/Stairway To Heaven - Led Zeppelin.flac
+/home/hp/Music/FLACs/Ngay Mai Em Di - Le Hieu_ Soobin Hoang S.flac
+/home/hp/Music/FLACs/In The End - Linkin Park.flac
+/home/hp/Music/FLACs/The Catalyst - Linkin Park.flac
+/home/hp/Music/FLACs/What I_ve Done - Linkin Park.flac
+/home/hp/Music/FLACs/The Little Things Give You Away_ - Linki.flac
+/home/hp/Music/FLACs/New Divide - Linkin Park.flac
 /home/hp/Music/New Divine - Linkin Park.mp3
 /home/hp/Music/In The End - Linkin Park [NCT 32633888900113662500].mp3
 /home/hp/Music/The Catalyst - Linkin Park [NCT 20634165389887656250].mp3
+/home/hp/Music/FLACs/Royals - Lorde.flac
+/home/hp/Music/FLACs/Can_t Hold Us - Macklemore_ Ray Dalton.flac
+/home/hp/Music/FLACs/Thrift Shop - Macklemore_ Wanz.flac
+/home/hp/Music/FLACs/Billie Jean - Michael Jackson.flac
+/home/hp/Music/FLACs/Thriller - Michael Jackson.flac
 /home/hp/Music/Yeu Duoi - Nguyen Hoang Dung [MP3 320kbps].mp3
+/home/hp/Music/FLACs/Nemo - Nightwish.flac
+/home/hp/Music/FLACs/Something In The Way - Nirvana.flac
 /home/hp/Music/Nirvana-Something-In-The-Way-Vmlboxcom.mp3
 /home/hp/Music/ChoNgayMuaTan-NooPhuocThinhTonyViet-2442282_hq.mp3
+/home/hp/Music/FLACs/Snails - Panic.flac
 /home/hp/Music/CanYouFeeltheLoveTonight-Pentatonix-6036516.mp3
 /home/hp/Music/Hallelujah-Pentatonix-6155042.mp3
+/home/hp/Music/Royals - Pentatonix.flac
+/home/hp/Music/FLACs/Daft Punk - Pentatonix.flac
+/home/hp/Music/FLACs/Bohemian Rhapsody - Pentatonix.flac
+/home/hp/Music/FLACs/Imagine - Pentatonix.flac
+/home/hp/Music/FLACs/It_s The Most Wonderful Time Of The Year.flac
+/home/hp/Music/FLACs/Silent Night - Pentatonix.flac
 /home/hp/Music/TheSoundofSilence-Pentatonix-5890076.mp3
 /home/hp/Music/Back In Time Extended Version - Pitbull (NhacPro.net).mp3
+/home/hp/Music/PostmodernJukebox/Creep - Postmodern Jukebox.mp3
 /home/hp/Music/AnotherOneBitesTheDustRemastered2011-Queen-5714922.mp3
 /home/hp/Music/BohemianRhapsodyRemastered2011-Queen-5714917.mp3
 /home/hp/Music/DonTStopMeNow-Queen-2706296.mp3
 /home/hp/Music/LoveOfMyLife-Queen-3277268.mp3
 /home/hp/Music/KillerQueenRemastered2011-Queen-5714915.mp3
+/home/hp/Music/FLACs/Queen - Greatest Hits - 01 - Bohemian Rhapsody.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits - 02 - Another One Bites The Dust.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits - 03 - Killer Queen.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits - 04 - Fat Bottomed Girls.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits - 07 - Don't Stop Me Now.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits - 10 - Somebody To Love.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits - 16 - We Will Rock You.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits - 17 - We Are The Champions.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits II - 02 - Under Pressure.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits II - 05 - I Want To Break Free.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits II - 06 - Innuendo.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits II - 09 - Who Wants To Live Forever.flac
+/home/hp/Music/FLACs/Queen - Greatest Hits II - 16 - The Show Must Go On.flac
 /home/hp/Music/05. Another One Bites The Dust.mp3
 /home/hp/Music/06. Under Pressure.mp3
 /home/hp/Music/07. Killer Queen.mp3
@@ -211,6 +265,9 @@
 /home/hp/Music/DiDeTroVe-SoobinHoangSon-4726882.mp3
 /home/hp/Music/WhereDoWeGo-ThanhBui-TataYoung_3xgkd_hq.mp3
 /home/hp/Music/LetItBe-TheBeatles-37394.mp3
+/home/hp/Music/FLACs/Hotel California LIVE_ - The Eagles.flac
+/home/hp/Music/FLACs/minh yeu nhau yeu nhau binh yen thoi - T.flac
 /home/hp/Music/Linh Hồn Vẫn Tồn Tại-UnlimiteD.mp3
 /home/hp/Music/TaKillYaBabyDriverMix-VinnieManiscalco-5413629.mp3
 /home/hp/Music/ThuCuoi-Yanbi-MrT-HangBingBoong_3k5vk.mp3
+/home/hp/Music/FLACs/Thu Cuoi - Yanbi_ Mr_T_ Hang BingBoong.flac

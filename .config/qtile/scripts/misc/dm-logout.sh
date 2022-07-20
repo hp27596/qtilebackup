@@ -6,9 +6,10 @@
 # - dmenu
 # - systemd
 
-chosen=$(echo -e "[Cancel]\n1. Logout\n2. Shutdown\n3. Reboot\n4. Suspend\n5. Lockscreen" | dmenu -i -l 10 -p "Choose Action:")
-
-if [[ $chosen = "4. Suspend" ]]; then
+chosen=$(echo -e "0. Screen Off\n1. Logout\n2. Shutdown\n3. Reboot\n4. Suspend\n5. Lockscreen" | dmenu -i -l 10 -p "Choose Action:")
+if [[ $chosen = "0. Screen Off" ]]; then
+	xset dpms force off
+elif [[ $chosen = "4. Suspend" ]]; then
 	systemctl suspend
 elif [[ $chosen = "1. Logout" ]]; then
 	echo 'shutdown()' | qtile shell
