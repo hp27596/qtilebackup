@@ -13,13 +13,12 @@ sudo makepkg -si
 
 # Copy pacman config
 cd ~/qtilebackup
-sudo cp extras/pacman.conf /etc/
 # copy dotfiles
 mkdir $HOME/.config
 cd ~/qtilebackup/
 cp -r .fonts ~/
-sudo cp extras/environment /etc/
-sudo cp extras/pfetch /usr/bin/pfetch
+sudo cp -r ./etc/ /
+sudo cp pfetch /usr/local/bin/
 rsync -av --progress ./.config/ $HOME/.config --exclude .git
 
 # Install essential packages

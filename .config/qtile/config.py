@@ -10,6 +10,7 @@ from libqtile.command import lazy
 from libqtile.widget import Spacer
 
 #mod4 or mod = super key
+#don't bind things to [mod, mod1], crashes qtile
 mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
@@ -40,35 +41,26 @@ def float_to_front(qtile):
             window.cmd_bring_to_front()
 
 @lazy.function
-def move_floating_up(qtile):
+def move_floating(qtile, direction):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(0, -90)
+        if direction == "up":
+            qtile.current_window.cmd_move_floating(0, -90)
+        elif direction == "down":
+            qtile.current_window.cmd_move_floating(0, 90)
+        elif direction == "left":
+            qtile.current_window.cmd_move_floating(-100, 0)
+        elif direction == "right":
+            qtile.current_window.cmd_move_floating(100, 0)
 
 @lazy.function
-def move_floating_down(qtile):
+def resize_floating(qtile, mod):
     if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(0, 90)
+        if mod == "grow":
+            qtile.current_window.cmd_resize_floating(100, 100)
+        elif mod == "shrink":
+            qtile.current_window.cmd_resize_floating(-100, -100)
 
 @lazy.function
-def move_floating_right(qtile):
-    if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(100, 0)
-
-@lazy.function
-def move_floating_left(qtile):
-    if qtile.current_window.floating:
-        qtile.current_window.cmd_move_floating(-100, 0)
-
-@lazy.function
-def grow_floating(qtile):
-    if qtile.current_window.floating:
-        qtile.current_window.cmd_resize_floating(100, 100)
-
-@lazy.function
-def shrink_floating(qtile):
-    if qtile.current_window.floating:
-        qtile.current_window.cmd_resize_floating(-100, -100)
-
 def toggle_group(qtile, group_name):
     if group_name == qtile.current_screen.group.name:
         return qtile.current_screen.set_group(qtile.current_screen.previous_group)
@@ -82,14 +74,13 @@ myTerm = "alacritty" # My terminal of choice
 keys = [
 
 # Custom function keys
-    Key([mod], "a", toggle_group),
     Key([mod], "y", lazy.function(toggle_stick_win), desc="Toggle Sticky Window"),
-    Key([mod, mod2], "period", grow_floating, desc="Grow Floating Window"),
-    Key([mod, mod2], "comma", shrink_floating, desc="Shrink Floating Window"),
-    Key([mod], "period", move_floating_right, desc="Move Floating Window Right"),
-    Key([mod], "comma", move_floating_left, desc="Move Floating Window Left"),
-    Key([mod, "shift"], "period", move_floating_down, desc="Move Floating Window Down"),
-    Key([mod, "shift"], "comma", move_floating_up, desc="Move Floating Window Up"),
+    Key([mod], "period", resize_floating("grow"), desc="Grow Floating Window"),
+    Key([mod], "comma", resize_floating("shrink"), desc="Grow Floating Window"),
+    Key([mod], "d", move_floating("right"), desc="Move Floating Window Right"),
+    Key([mod], "a", move_floating("left"), desc="Move Floating Window Left"),
+    Key([mod], "s", move_floating("down"), desc="Move Floating Window Down"),
+    Key([mod], "w", move_floating("up"), desc="Move Floating Window Up"),
 
 # SUPER + FUNCTION KEYS
     Key([mod], "g", lazy.spawn('google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --disable-features=UseChromeOSDirectVideoDecoder --gtk-version=4'), desc='Launch Google Chrome'),
@@ -204,7 +195,7 @@ for i in groups:
     keys.extend([
 
 #CHANGE WORKSPACES
-        Key([mod], i.name, lazy.function(toggle_group, i.name), desc='Switch to Workspace {}'.format(i.name)),
+        Key([mod], i.name, toggle_group(i.name), desc='Switch to Workspace {}'.format(i.name)),
 
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen(), desc='Move Window to Workspace {}'.format(i.name)),

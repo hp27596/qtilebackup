@@ -37,5 +37,5 @@ sh ~/.config/qtile/scripts/batterynotification.sh &
 
 # run nuclear &
 
-sleep 3
-emacsclient -c -a "emacs" &
+# sleep 3
+# emacsclient -c -a "emacs" &
