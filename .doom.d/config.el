@@ -3,11 +3,14 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+;; Better syntax highlighting with tree sitter
 (use-package! tree-sitter
   :config
   (require 'tree-sitter-langs)
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+
 
 ;; :q should kill the current buffer rather than quitting emacs entirely
 ;; Evil mode rebinds
@@ -27,10 +30,13 @@
 (define-key evil-normal-state-map [down] 'evil-next-visual-line)
 (define-key evil-normal-state-map [up] 'evil-previous-visual-line)
 
+
+
+
+;; Custom Functions/Keybinds
 ;; wordcount
 (wc-mode t)
 (define-key evil-normal-state-map "\M-c" 'wc-count)
-
 ;; Swap workspace
 (map! :leader
       :prefix "TAB"
@@ -38,7 +44,6 @@
 (map! :leader
       :prefix "TAB"
       :desc "+workspace/swap-right" "=" #'+workspace/swap-right)
-
 ;; faster split manipulation
 (map! :leader
       :desc "evil-window-delete" "d" #'evil-window-delete)
@@ -46,25 +51,64 @@
       :desc "evil-window-delete" "k" #'evil-window-next)
 (map! :leader
       :desc "evil-window-delete" "j" #'evil-window-prev)
+;; faster terminal access
+(map! :leader
+      :desc "toggle vterm popup" "0" #'+vterm/toggle)
+;; dired vim keys
+(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)
+;; Prompt for buffers to open after split
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (consult-buffer))
+;; Org Auto Tangle
+;; (use-package! org-auto-tangle
+;;   :defer t
+;;   :hook (org-mode . org-auto-tangle-mode)
+;;   :config
+;;   (setq org-auto-tangle-default t))
+;; full link instead of shortcut
+(setq org-descriptive-links nil)
+;; treemacs
+(setq treemacs-sorting 'alphabetic-case-insensitive-desc)
+;; dired
+(define-key dired-mode-map (kbd "M-i") 'dired-create-empty-file)
+;; scroll margin
+(setq scroll-margin 8)
+;; emacs everywhere
+;; (setq emacs-everywhere-mode-initial-map nil)
+;; Emphasize selected text
+(map! :leader
+      :prefix "i"
+      :desc "emphasize selected text" "z" #'org-emphasize)
+
+
+
+;; Custom Set Variables
+;; Visual column mode in org documents
+(add-hook 'org-mode-hook #'visual-fill-column-mode)
+;; (global-visual-fill-column-mode t)
+(setq-default visual-fill-column-center-text t)
+(setq-default fill-column 90)
+;; beacon scrolling
+(beacon-mode 1)
+;; buffer scroll bar on the right for easier navigation and knowing where in the document the cursor is
+(scroll-bar-mode 1)
+;; enable word-wrap
+(+global-word-wrap-mode +1)
+;; (adaptive-wrap-prefix-mode t)
+;; Set Vterm defaultl shell
+(setq vterm-shell '/usr/bin/zsh)
+
+
+
 
 ;; org2blog mappings
 (map! :leader
       :prefix "o"
       :desc "org2blog-user-interface" "o" #'org2blog-user-interface)
-
-;; faster terminal access
-(map! :leader
-      :desc "toggle vterm popup" "0" #'+vterm/toggle)
-
-;; dired vim keys
-(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)
-
-(add-hook 'org-mode-hook #'visual-fill-column-mode)
-;; (global-visual-fill-column-mode t)
-(setq-default visual-fill-column-center-text t)
-(setq-default fill-column 90)
-
 ;; org2blog setup
 (require 'org2blog)
 (add-hook 'org-mode-hook 'org2blog/wp-mode)
@@ -79,17 +123,15 @@
                         :username ,user
                         :password ,pass))))
                 (setq org2blog/wp-blog-alist config)))
-
 ;; (org2blog-user-login)
 (defun org2blog-creds-and-login()(interactive)(org2blogcreds)(org2blog-user-login))
-
 (map! :leader
       :prefix "o"
       :desc "Org2blog creds and login" "4" #'org2blog-creds-and-login)
-
 (setq org-export-show-temporary-export-buffer nil)
 (setq org2blog/wp-image-upload t)
 
+;; doom emacs dashboard setup
 (use-package dashboard
   :init      ;; tweak dashboard config before loading it
   (setq dashboard-set-heading-icons t)
@@ -110,46 +152,7 @@
 (dashboard-refresh-buffer)
 (setq doom-fallback-buffer-name "*dashboard*")
 
-
-;; beacon scrolling
-(beacon-mode 1)
-
-;; buffer scroll bar on the right for easier navigation and knowing where in the document the cursor is
-(scroll-bar-mode 1)
-
-;; enable word-wrap
-(+global-word-wrap-mode +1)
-;; (adaptive-wrap-prefix-mode t)
-
-;; Prompt for buffers to open after split
-(setq evil-vsplit-window-right t
-      evil-split-window-below t)
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (consult-buffer))
-
-;; Org Auto Tangle
-;; (use-package! org-auto-tangle
-;;   :defer t
-;;   :hook (org-mode . org-auto-tangle-mode)
-;;   :config
-;;   (setq org-auto-tangle-default t))
-
-;; full link instead of shortcut
-(setq org-descriptive-links nil)
-
-;; treemacs
-(setq treemacs-sorting 'alphabetic-case-insensitive-desc)
-
-;; dired
-(define-key dired-mode-map (kbd "M-i") 'dired-create-empty-file)
-
-;; scroll margin
-(setq scroll-margin 8)
-
-;; emacs everywhere
-;; (setq emacs-everywhere-mode-initial-map nil)
-
+;; Custom Inserts
 ;; Insert Blog Tags
 (define-skeleton autofill-blog-tags
   "Blog tags for Wordpress "
@@ -166,34 +169,28 @@
 (map! :leader
       :prefix "i"
       :desc "Fill blog tags" "b" 'autofill-blog-tags)
-
-;; Faster insert of source code tags
-(defun insert-begin-src()(interactive)(insert "#+begin_src "))
-(map! :leader
-      :prefix "i"
-      :desc "Insert Begin Src Snippet" "1" #'insert-begin-src)
-
-(defun insert-end-src()(interactive)(insert "#+end_src "))
-(map! :leader
-      :prefix "i"
-      :desc "Insert End Src Snippet" "2" #'insert-end-src)
-
+;; Insert img tags
 (defun insert-img-html-attr()(interactive)(insert "#+ATTR_HTML: :alt  :title
 #+CAPTION: "))
 (map! :leader
       :prefix "i"
       :desc "Insert blog html attr" "3" #'insert-img-html-attr)
-
+;; Faster insert of source code tags
+(defun insert-begin-src()(interactive)(insert "#+begin_src "))
 (map! :leader
       :prefix "i"
-      :desc "Org-emphasize" "z" #'org-emphasize)
+      :desc "Insert Begin Src Snippet" "1" #'insert-begin-src)
+(defun insert-end-src()(interactive)(insert "#+end_src "))
+(map! :leader
+      :prefix "i"
+      :desc "Insert End Src Snippet" "2" #'insert-end-src)
+
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Peter Nguyen"
       user-mail-address "peter@peterconfidential.com")
 
-(setq vterm-shell '/usr/bin/zsh)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
