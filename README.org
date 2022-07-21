@@ -9,8 +9,10 @@ I wrote about my full experience daily driving qtile [[https://peterconfidential
 
 [[2022-07-11_16-31.png]]
 
-#+TOC: headlines 1
-
+** Table of Contents :TOC:
+  - [[#why-is-everything-so-large][Why is everything so large?]]
+  - [[#need-to-know][Need to know]]
+  - [[#extras][Extras]]
 
 ** Why is everything so large?
 
