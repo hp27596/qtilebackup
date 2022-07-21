@@ -22,6 +22,10 @@ This repo is meant to be used as my backup repo. I *STRONGLY* advise against bli
 ** Why is everything so large?
 I'm using a 7 inch umpc, hence the scaling needs to be that way. The plus side is it makes for good demonstration and screenshots. You can scale back the DPI with ~.Xresources~ file and reduce bar size in ~qtile/config.py~.
 
+[[/home/hp/qtilebackup/IMG_20210302_215632_1.jpg]]
+
+[[/home/hp/qtilebackup/MVIMG_20220721_234851.jpg]]
+
 ** Usage
 I run the script ~backup.sh~ periodically to copy all my personal dotfiles to this repo and upload it to github.
 
