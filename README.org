@@ -32,7 +32,7 @@ I run the script ~backup.sh~ periodically to copy all my personal dotfiles to th
 
 [[2022-07-11_16-32.png]]
 
-+If you want to install everything as is what I have though, run the ~installscript.sh~ file.+ (You could, but don't do that.)
++If you want to install everything as is what I have though, run the file installscript.sh.+ (You could, but don't do that.)
 
 *You really should open the files you want to use first and read it through. Comment out or delete the stuff you don't want installed on your own system.*
 
