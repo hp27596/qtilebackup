@@ -197,9 +197,12 @@
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
-(setq doom-font (font-spec :family "Comic Code Ligatures" :size 27)
-      doom-big-font (font-spec :family "Comic Code Ligatures" :size 35)
-      doom-variable-pitch-font (font-spec :family "Comic Code Ligatures" :size 27))
+;; (setq doom-font (font-spec :family "Comic Code Ligatures" :size 27)
+      ;; doom-big-font (font-spec :family "Comic Code Ligatures" :size 35)
+      ;; doom-variable-pitch-font (font-spec :family "Comic Code Ligatures" :size 27))
+
+(setq doom-font (font-spec :family "Source Code Pro" :size 29)
+      doom-big-font (font-spec :family "Source Code Pro" :size 35))
 
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
 ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
@@ -224,7 +227,7 @@
 (setq doom-theme 'doom-molokai)
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are di55sabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!

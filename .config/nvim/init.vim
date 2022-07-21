@@ -8,6 +8,7 @@
 :set linebreak
 :set so=5
 :set clipboard=unnamed
+set number relativenumber
 " :set spell
 
 call plug#begin()

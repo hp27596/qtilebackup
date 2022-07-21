@@ -215,7 +215,7 @@
 /home/hp/Music/FLACs/Thriller - Michael Jackson.flac
 /home/hp/Music/Yeu Duoi - Nguyen Hoang Dung [MP3 320kbps].mp3
 /home/hp/Music/FLACs/Nemo - Nightwish.flac
-/home/hp/Music/FLACs/Something In The Way - Nirvana.flac
+/home/hp/Music/FLACs/12 - Something In The Way.flac
 /home/hp/Music/Nirvana-Something-In-The-Way-Vmlboxcom.mp3
 /home/hp/Music/ChoNgayMuaTan-NooPhuocThinhTonyViet-2442282_hq.mp3
 /home/hp/Music/FLACs/Snails - Panic.flac
@@ -228,8 +228,12 @@
 /home/hp/Music/FLACs/It_s The Most Wonderful Time Of The Year.flac
 /home/hp/Music/FLACs/Silent Night - Pentatonix.flac
 /home/hp/Music/TheSoundofSilence-Pentatonix-5890076.mp3
+/home/hp/Music/FLACs/Fearless - Pink Floyd.flac
+/home/hp/Music/FLACs/Time - Pink Floyd.flac
+/home/hp/Music/FLACs/Comfortably Numb - Pink Floyd.flac
 /home/hp/Music/Back In Time Extended Version - Pitbull (NhacPro.net).mp3
 /home/hp/Music/PostmodernJukebox/Creep - Postmodern Jukebox.mp3
+/home/hp/Music/PostmodernJukebox/Seven Nation Army - Postmodern jukebox.mp3
 /home/hp/Music/AnotherOneBitesTheDustRemastered2011-Queen-5714922.mp3
 /home/hp/Music/BohemianRhapsodyRemastered2011-Queen-5714917.mp3
 /home/hp/Music/DonTStopMeNow-Queen-2706296.mp3
@@ -238,7 +242,6 @@
 /home/hp/Music/FLACs/Queen - Greatest Hits - 01 - Bohemian Rhapsody.flac
 /home/hp/Music/FLACs/Queen - Greatest Hits - 02 - Another One Bites The Dust.flac
 /home/hp/Music/FLACs/Queen - Greatest Hits - 03 - Killer Queen.flac
-/home/hp/Music/FLACs/Queen - Greatest Hits - 04 - Fat Bottomed Girls.flac
 /home/hp/Music/FLACs/Queen - Greatest Hits - 07 - Don't Stop Me Now.flac
 /home/hp/Music/FLACs/Queen - Greatest Hits - 10 - Somebody To Love.flac
 /home/hp/Music/FLACs/Queen - Greatest Hits - 16 - We Will Rock You.flac

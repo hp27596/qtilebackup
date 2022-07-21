@@ -8,6 +8,7 @@ declare -a options=(
     "Misc Search (Synonym, etc) - dm-miscsearch.sh"
     "Word Autocompletion And Suggestion - dm-autocomplete.sh"
     "Update Cmus Library - cmus-update.sh"
+    "Reddit TUI (Term) - tuir.sh"
     "View Keybinds (Term) - exportkeys.sh"
     "Logout Prompt - dm-logout.sh"
     "Connect to Network (Term) - nmtui.sh"
@@ -18,6 +19,7 @@ declare -a options=(
     "Open Clean Disk Utility (Term) - ncdu"
     "Refresh App Launcher Cache - dm-frecency-flush.sh"
     "Open Dotfiles Chooser - dm-opendot.sh"
+    "Login Portal/Network Check - networkcheck.sh"
 )
 
 # script folder path

@@ -61,7 +61,7 @@ def resize_floating(qtile, mod):
             qtile.current_window.cmd_resize_floating(-100, -100)
 
 @lazy.function
-def toggle_group(qtile, group_name):
+def switch_workspace(qtile, group_name):
     if group_name == qtile.current_screen.group.name:
         return qtile.current_screen.set_group(qtile.current_screen.previous_group)
     for i, group in enumerate(qtile.groups):
@@ -75,14 +75,15 @@ keys = [
 
 # Custom function keys
     Key([mod], "y", lazy.function(toggle_stick_win), desc="Toggle Sticky Window"),
-    Key([mod], "period", resize_floating("grow"), desc="Grow Floating Window"),
-    Key([mod], "comma", resize_floating("shrink"), desc="Grow Floating Window"),
-    Key([mod], "d", move_floating("right"), desc="Move Floating Window Right"),
-    Key([mod], "a", move_floating("left"), desc="Move Floating Window Left"),
-    Key([mod], "s", move_floating("down"), desc="Move Floating Window Down"),
-    Key([mod], "w", move_floating("up"), desc="Move Floating Window Up"),
+    Key([mod, mod2], "d", resize_floating("grow"), desc="Grow Floating Window"),
+    Key([mod, mod2], "a", resize_floating("shrink"), desc="Shrink Floating Window"),
+    Key([mod, "shift"], "d", move_floating("right"), desc="Move Floating Window Right"),
+    Key([mod, "shift"], "a", move_floating("left"), desc="Move Floating Window Left"),
+    Key([mod, "shift"], "s", move_floating("down"), desc="Move Floating Window Down"),
+    Key([mod, "shift"], "w", move_floating("up"), desc="Move Floating Window Up"),
 
-# SUPER + FUNCTION KEYS
+# KEYBINDS
+    Key([mod], "period", lazy.spawn(home +'/.config/qtile/scripts/misc/dm-opendot.sh'), desc='Dmenu Dotfiles Opener'),
     Key([mod], "g", lazy.spawn('google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --disable-features=UseChromeOSDirectVideoDecoder --gtk-version=4'), desc='Launch Google Chrome'),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc='Toggle Window Fullscreen'),
     Key([mod], "q", lazy.function(unstick_win), lazy.window.kill(), desc='Kill Current Window'),
@@ -152,6 +153,10 @@ keys = [
     Key([mod], "Right", lazy.layout.grow_main(), desc='Increase Master Size'),
     Key([mod], "Left", lazy.layout.shrink_main(), desc='Decrease Master Size'),
 
+# This is for faster one handed operation
+    Key([mod], "d", lazy.group.next_window(), float_to_front, desc='Focus Next Window'),
+    Key([mod], "a", lazy.group.prev_window(), float_to_front, desc='Focus Previous Window'),
+
 # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip(), desc='Flip Layout'),
 
@@ -195,7 +200,7 @@ for i in groups:
     keys.extend([
 
 #CHANGE WORKSPACES
-        Key([mod], i.name, toggle_group(i.name), desc='Switch to Workspace {}'.format(i.name)),
+        Key([mod], i.name, switch_workspace(i.name), desc='Switch to Workspace {}'.format(i.name)),
 
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen(), desc='Move Window to Workspace {}'.format(i.name)),
@@ -359,7 +364,7 @@ def init_widgets_list():
                     format = '%c%t (%f)', #%l:
                     # update_interval = 1200,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
-                    location = {"":""},),
+                    location = {"Hanoi":"Hanoi"},),
 
                 widget.Sep(**sep()),
 
@@ -429,7 +434,7 @@ def assign_app_group(client):
     d["5"] = ["Steam"]
     d["6"] = ["tmux", "nuclear", "crx_agimnkijcaahngcdmfeangaknmldooml",]
     d["7"] = ["thunar", "ranger"]
-    d["8"] = ["sysmon"]
+    d["8"] = ["sysmon", "qBittorrent"]
     d["9"] = ["telegram-desktop", ]
     d["0"] = []
     ##########################################################

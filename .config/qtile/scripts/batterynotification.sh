@@ -2,8 +2,8 @@
 
 state=$(ps aux | grep batterynotification.sh | grep -v grep)
 
-if [ $state != '' ]; then
-    return 1
+if [[ $state != '' ]]; then
+    exit 0
 fi
 
 full_notified=false

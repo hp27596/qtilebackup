@@ -37,5 +37,9 @@ sh ~/.config/qtile/scripts/batterynotification.sh &
 
 # run nuclear &
 
-# sleep 3
-# emacsclient -c -a "emacs" &
+# wait for emacs daemon to start
+while [[ $(pgrep emacsclient) = '' ]]
+do
+    sleep 2
+    emacsclient -c &
+done

@@ -2,13 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+export TUIR_BROWSER="qutebrowser"
 export ZSH="/home/hp/.oh-my-zsh"
 export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR=nvim
 export PATH="$HOME/.emacs.d/bin:$HOME/.local/bin:$PATH"
 export HISTCONTROL=ignoredups:erasedups
 
-unsetopt autocd
+unsetopt autocd #this is just a pain in the ass most of the time
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -115,19 +116,27 @@ HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
+# base aliases
 alias sudo='sudo ' #use aliases with sudo
-alias joplind='joplin --profile ~/.config/joplin-desktop/'
+alias ls='ls --color=auto --group-directories-first'
 alias la='ls -a'
-alias xrandrbr='xrandr --output eDP1 --brightness'
 alias vim='nvim'
 alias cls='clear'
-alias feh='feh --auto-zoom'
-alias emacs="emacsclient -c -a 'emacs'"
-alias wlg='nohup wl-gammactl -g'
-alias tmuxa='tmux attach -t 0'
 alias mv='mv -i'
-alias rm='rm -i'
-alias resemacs='killall emacs && \emacs --daemon'
+# alias rm='rm -i'
+alias ka='killall'
+alias rm='echo "Did you mean trash-put(tp)?. Try \\\rm if you really want to use rm."'
+alias tp='trash-put'
+alias mkd='mkdir -pv'
+
+# ext aliases
+alias resemacs='killall emacs && \emacs --daemon && nohup emacsclient -c >&/dev/null &'
+alias joplind='joplin --profile ~/.config/joplin-desktop/' #joplin-cli use joplin-desktop data
+alias tmuxa='tmux attach -t 0'
+alias wlg='nohup wl-gammactl -g' #wayland extended brightness
+alias xrandrbr='xrandr --output eDP1 --brightness' #set extended brightness
+alias emacs="emacsclient -c -a 'emacs'"
+
 cdl() { cd "$@" && ls; }
 
 # uname -a

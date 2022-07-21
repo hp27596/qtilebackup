@@ -17,7 +17,7 @@ cp --parents -r /etc/X11/xorg.conf.d/ $HOME/qtilebackup
 cp -p -r ~/.config/{alacritty,bottom,btop,cmus,dunst,fcitx5,feh,'gtk-2.0','gtk-3.0',mpv,nvim,picom,qtile,ranger,dmenu-frecency,zathura} $HOME/qtilebackup/.config
 
 cp -r ~/.doom.d/ $HOME/qtilebackup/
-cp -r ~/.fonts/ $HOME/qtilebackup/
+# cp -r ~/.fonts/ $HOME/qtilebackup/
 
 cp /etc/{environment,pacman.conf,vconsole.conf} $HOME/qtilebackup/etc/
 

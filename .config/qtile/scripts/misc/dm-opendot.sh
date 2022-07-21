@@ -26,7 +26,7 @@ for ((i=0;i<cnt;i++)); do
 done
 
 # choose file
-choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 20 -p 'Choose Script:')
+choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 20 -p 'Edit Script:')
 chosen=$(printf "$choice" | awk '{print $NF}')
 name=$(printf "$chosen" | awk -F '/' '{print $NF}')
 
