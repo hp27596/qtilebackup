@@ -8,7 +8,11 @@ I wrote about my full experience daily driving qtile [[https://peterconfidential
 
 [[2022-07-11_16-31.png]]
 
-#+TOC: headlines 2
+** Table of Contents :TOC:
+  - [[#why-is-everything-so-large][Why is everything so large?]]
+  - [[#need-to-know][Need to know]]
+  - [[#extras][Extras]]
+  - [[#enjoy][Enjoy!]]
 
 ** Why is everything so large?
 I'm using a 7 inch umpc, hence the scaling needs to be that way. The plus side is it makes for good demonstration and screenshots. You can scale back the DPI with ~.Xresources~ file and reduce bar size in ~qtile/config.py~.
@@ -29,6 +33,10 @@ If you want to install everything as is what I have though, run the ~installscri
 Ideally, if I were you, I'd look into which tools I'd like to check out, and only copy the dotfiles of that tool. E.g, if I want to check out this repo's qtile config, I'd go ahead and copy ~qtilebackup/.config/qtile~ to my ~.config~ folder
 
 ** Extras
+*** Scripts
 There's a bunch of scripts I wrote and find useful in ~/qtile/scripts/misc/~ folder. Check it out if you like. The dmenu script to launch scripts is ~dm-launch.sh~. I binded it to ~Meta+Slash~ in my qtile config
 
-Enjoy!
+*** Emacs
+I use emacs as my main text editor, thus my config files are heavily skewed towards making emacs integrate with the system. There's also a basic neovim config in here if you want to use that.
+
+** Enjoy!
