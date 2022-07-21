@@ -2,20 +2,15 @@
 #+author: Hp
 
 
-
 This is my dotfiles for my whole qtile system, including dots for tools I used.
 
-I wrote about my full experience daily driving qtile [[https://peterconfidential.com/qtile-review-tips-tricks][here]], so check it out if you like to read further
+I wrote about my full experience daily driving qtile [[https://peterconfidential.com/qtile-review-tips-tricks][here]], so check it out if you'd like to read further.
 
 [[2022-07-11_16-31.png]]
 
-** Table of Contents :TOC:
-  - [[#why-is-everything-so-large][Why is everything so large?]]
-  - [[#need-to-know][Need to know]]
-  - [[#extras][Extras]]
+#+TOC: headlines 2
 
 ** Why is everything so large?
-
 I'm using a 7 inch umpc, hence the scaling needs to be that way. The plus side is it makes for good demonstration and screenshots. You can scale back the DPI with ~.Xresources~ file and reduce bar size in ~qtile/config.py~.
 
 ** Need to know
