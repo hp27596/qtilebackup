@@ -32,6 +32,6 @@ name=$(printf "$chosen" | awk -F '/' '{print $NF}')
 
 # open file in a new emacs workspace. replace the command with your favorite editor, i.e vim '$chosen'
 if [ "$chosen" != "" ]; then
-    emacsclient -e '(progn (+workspace-new "'$name'")(+workspace-switch "'$name'")(find-file "'$chosen'"))' -a 'emacs'
+    emacsclient -e '(progn (+workspace-new "'$name'")(+workspace-switch "'$name'")(find-file "'$chosen'"))'
     qtile cmd-obj -o group 2 -f toscreen
 fi

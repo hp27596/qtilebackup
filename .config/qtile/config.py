@@ -88,7 +88,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc='Toggle Window Fullscreen'),
     Key([mod], "q", lazy.function(unstick_win), lazy.window.kill(), desc='Kill Current Window'),
     Key([mod], "v", lazy.spawn('pavucontrol'), desc='Launch Pulseaudio Volume Control'),
-    Key([mod], "e", lazy.spawn('emacsclient -c -a "emacs"'), desc='Launch Emacs Client'),
+    Key([mod], "e", lazy.spawn(home + '/.config/qtile/scripts/emacs-launch.sh'), desc='Launch Emacs Client'),
     Key([mod], "Return", lazy.spawn(myTerm), desc='Launch Terminal'),
     Key([mod], "t", lazy.spawn('thunar'), desc='Launch File Manager'),
     Key([mod], "m", lazy.spawn('env GDK_SCALE=2 steam'), desc='Launch Steam'),

@@ -5,12 +5,12 @@
 
 This is my dotfiles for my whole qtile system, including dots for tools I used.
 
+I wrote about my full experience daily driving qtile [[https://peterconfidential.com/qtile-review-tips-tricks][here]], so check it out if you like to read further
+
 [[2022-07-11_16-31.png]]
 
-** Table of Contents :TOC:
-  - [[#why-is-everything-so-large][Why is everything so large?]]
-  - [[#need-to-know][Need to know]]
-  - [[#extras][Extras]]
+#+TOC: headlines 1
+
 
 ** Why is everything so large?
 

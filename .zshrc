@@ -135,7 +135,7 @@ alias joplind='joplin --profile ~/.config/joplin-desktop/' #joplin-cli use jopli
 alias tmuxa='tmux attach -t 0'
 alias wlg='nohup wl-gammactl -g' #wayland extended brightness
 alias xrandrbr='xrandr --output eDP1 --brightness' #set extended brightness
-alias emacs="emacsclient -c -a 'emacs'"
+alias emacs="~/.config/qtile/scripts/emacs-launch.sh"
 
 cdl() { cd "$@" && ls; }
 
