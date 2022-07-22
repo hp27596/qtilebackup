@@ -15,6 +15,7 @@ I wrote about my full experience daily driving qtile [[https://peterconfidential
   - [[#usage][Usage]]
   - [[#extras][Extras]]
     - [[#scripts][Scripts]]
+    - [[#dmenu][Dmenu]]
     - [[#emacs][Emacs]]
 
 ** READ THIS!
@@ -40,7 +41,14 @@ Ideally, if I were you, I'd look into which tools I'd like to check out, and onl
 
 ** Extras
 *** Scripts
-There's a bunch of scripts I wrote and find useful in ~/qtile/scripts/misc/~ folder. Check it out if you like. The dmenu script to launch scripts is ~dm-launch.sh~. I binded it to ~Meta+Slash~ in my qtile config
+There's a bunch of scripts I wrote and find useful in ~/qtile/scripts/misc/~ folder. Check it out if you like. The dmenu script to launch scripts is ~dm-scriptlauncher.sh~. I binded it to ~Meta+Slash~ in my qtile config.
+
+*** Dmenu
+I use a lot of dmenu for my workflow convenience. Dmenu scripts are listed as =dm-= something in my scripts folder. I find dmenu the perfect menu for scripting, and I don't find the need to use anything else.
+
+You can find a dmenu fork repo that I use personally in my github profile.
+
+[[https://peterconfidential.com/dmenu-collection][You can also read a blog post I write about dmenu here]]
 
 *** Emacs
 I use emacs as my main text editor, thus my config files are heavily skewed towards making emacs integrate with the system. There's also a basic neovim config in here if you want to use that.

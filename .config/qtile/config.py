@@ -87,7 +87,6 @@ keys = [
     Key([mod], "g", lazy.spawn('google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --disable-features=UseChromeOSDirectVideoDecoder --gtk-version=4'), desc='Launch Google Chrome'),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc='Toggle Window Fullscreen'),
     Key([mod], "q", lazy.function(unstick_win), lazy.window.kill(), desc='Kill Current Window'),
-    Key([mod], "v", lazy.spawn('pavucontrol'), desc='Launch Pulseaudio Volume Control'),
     Key([mod], "e", lazy.spawn(home + '/.config/qtile/scripts/emacs-launch.sh'), desc='Launch Emacs Client'),
     Key([mod], "Return", lazy.spawn(myTerm), desc='Launch Terminal'),
     Key([mod], "t", lazy.spawn('thunar'), desc='Launch File Manager'),
@@ -295,12 +294,12 @@ def init_widgets_list():
                     highlight_method = 'block', # or border
                     font='Ubuntu Mono',
                     icon_size=22,
-                    max_title_width=300,
+                    # max_title_width=300,
                     rounded=True,
                     padding_x=10,
                     padding_y=10,
                     margin_y=0,
-                    fontsize=24,
+                    fontsize=0,
                     border=maincolor,
                     foreground=colors[5],
                     margin=0,
@@ -308,6 +307,12 @@ def init_widgets_list():
                     txt_minimized='>_ ',
                     borderwidth = 1,
                     background=basecolor),
+
+                widget.WindowName(
+                    font='Ubuntu Mono',
+                    width=350,
+                    max_chars=20,
+                    fontsize=22,),
 
                 widget.CurrentLayoutIcon(
                     custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],

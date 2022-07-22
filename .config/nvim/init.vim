@@ -31,7 +31,7 @@ nnoremap U <C-r>
 
 noremap <C-c> "+y<CR>
 noremap <C-x> "+d<CR>
-noremap <C-v> "+p<CR>
+" noremap <C-v> "+p<CR>
 noremap <C-a> ggVG<CR>
 
 inoremap <C-v> <C-r>*

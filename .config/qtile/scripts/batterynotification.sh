@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-state=$(ps aux | grep batterynotification.sh | grep -v grep)
-
-if [[ $state != '' ]]; then
-    exit 0
-fi
+kill $(pgrep -f batterynotification.sh | grep -v ^$$$)
 
 full_notified=false
 low_notified=false
