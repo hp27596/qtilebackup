@@ -296,7 +296,7 @@ def init_widgets_list():
                     icon_size=22,
                     # max_title_width=300,
                     rounded=True,
-                    padding_x=10,
+                    padding_x=5,
                     padding_y=10,
                     margin_y=0,
                     fontsize=0,
