@@ -83,23 +83,24 @@ keys = [
     Key([mod, "shift"], "w", move_floating("up"), desc="Move Floating Window Up"),
 
 # KEYBINDS
-    Key([mod], "period", lazy.spawn(home +'/.config/qtile/scripts/misc/dm-opendot.sh'), desc='Dmenu Dotfiles Opener'),
+    Key([mod], "period", lazy.spawn(home +'/.config/misc/dm-opendot.sh'), desc='Dmenu Dotfiles Opener'),
     Key([mod], "g", lazy.spawn('google-chrome-stable --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --disable-features=UseChromeOSDirectVideoDecoder --gtk-version=4'), desc='Launch Google Chrome'),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc='Toggle Window Fullscreen'),
     Key([mod], "q", lazy.function(unstick_win), lazy.window.kill(), desc='Kill Current Window'),
-    Key([mod], "e", lazy.spawn(home + '/.config/qtile/scripts/emacs-launch.sh'), desc='Launch Emacs Client'),
+    Key([mod], "e", lazy.spawn(home + '/.config/emacs-launch.sh'), desc='Launch Emacs Client'),
     Key([mod], "Return", lazy.spawn(myTerm), desc='Launch Terminal'),
     Key([mod], "t", lazy.spawn('thunar'), desc='Launch File Manager'),
     Key([mod], "m", lazy.spawn('env GDK_SCALE=2 steam'), desc='Launch Steam'),
-    Key([mod], "o", lazy.spawn(home + '/.config/qtile/scripts/misc/dm-logout.sh'), desc='Logout Menu'),
-    Key([mod], "p", lazy.spawn(home + '/.config/qtile/scripts/togglepicom.sh'), desc='Toggle Picom Transparency'),
-    Key([mod], "slash", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-scriptlauncher.sh"), desc='Dmenu Misc Script Launcher'),
+    Key([mod], "o", lazy.spawn(home + '/.config/misc/dm-logout.sh'), desc='Logout Menu'),
+    Key([mod], "p", lazy.spawn(home + '/.config/misc/togglepicom.sh'), desc='Toggle Picom Transparency'),
+    Key([mod], "slash", lazy.spawn(home + "/.config/misc/dm-scriptlauncher.sh"), desc='Dmenu Misc Script Launcher'),
     Key([mod], "i", lazy.spawn('clipmenu -i -l 15 -p "Choose Clipboard:"'), desc='Dmenu Clipboard'),
 
 # ALACRITTY KEYBINDS
+    Key([mod], "c", lazy.spawn(myTerm + ' --class calc,calc -e calc'), desc='Launch Calculator'),
     Key([mod], "n", lazy.spawn(myTerm + ' --class ranger,ranger -e ranger'), desc='Launch Ranger'),
     Key([mod], "b", lazy.spawn(myTerm + ' --class sysmon,sysmon -e btop'), desc='Launch System Monitor'),
-    Key([mod], "r", lazy.spawn(home + "/.config/qtile/scripts/misc/dm-frecency"), desc='Program Launcher'),
+    Key([mod], "r", lazy.spawn(home + "/.config/misc/dm-frecency"), desc='Program Launcher'),
     Key([mod], "u", lazy.spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh"), desc='Connect to Wifi'), #fixes nmtui resizing issue
 
 # SUPER + SHIFT KEYS
@@ -260,6 +261,9 @@ def sep():
 
 # WIDGETS FOR THE BAR
 
+basecolor = colors[14]
+maincolor = colors[18]
+
 def init_widgets_defaults():
     return dict(font="Ubuntu Mono",
                 fontsize = 22,
@@ -271,8 +275,6 @@ widget_defaults = init_widgets_defaults()
 
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
-    basecolor = colors[14]
-    maincolor = colors[18]
     widgets_list = [
                 widget.GroupBox(
                     font='Ubuntu Mono',
@@ -288,13 +290,17 @@ def init_widgets_list():
                     this_screen_border=colors[17],
                     other_current_screen_border=colors[13],
                     other_screen_border=colors[17],
-                    disable_drag=True),
+                    disable_drag=True,
+                ),
+
+                widget.Sep(**sep()),
+
+                # widget.Spacer(),
 
                 widget.TaskList(
                     highlight_method = 'block', # or border
                     font='Ubuntu Mono',
                     icon_size=22,
-                    # max_title_width=300,
                     rounded=True,
                     padding_x=5,
                     padding_y=10,
@@ -306,25 +312,29 @@ def init_widgets_list():
                     txt_floating='🗗',
                     txt_minimized='>_ ',
                     borderwidth = 1,
-                    background=basecolor),
+                    background=basecolor,
+                ),
 
                 widget.WindowName(
                     font='Ubuntu Mono',
-                    width=350,
-                    max_chars=20,
-                    fontsize=22,),
+                    width=500,
+                    max_chars=30,
+                    fontsize=22,
+                ),
 
                 widget.CurrentLayoutIcon(
                     custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
                     padding = 0,
-                    scale = 0.7),
+                    scale = 0.7
+                ),
 
                 widget.Sep(**sep()),
 
                 widget.ThermalSensor(
                     fmt = '{}',
                     tag_sensor = "Core 0",
-                    update_interval = 5),
+                    update_interval = 5,
+                ),
 
                 widget.Sep(**sep()),
 
@@ -334,8 +344,8 @@ def init_widgets_list():
                     charge_char = '',
                     discharge_char = '',
                     full_char = '=',
-                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},),
-                    # notify_below = 0.2,), #this doesn't work for some reasons. I'm using my own shell script.
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e btop")},
+                ),
 
                 widget.Sep(**sep()),
 
@@ -344,44 +354,75 @@ def init_widgets_list():
                     disconnected_message = 'Disconnected',
                     max_chars = 9,
                     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/nmtui.sh")}, #fixes nmtui resizing issue
-                    update_interval = 5),
+                    update_interval = 5,
+                ),
 
                 widget.Sep(**sep()),
 
                 widget.Volume(
-                    fmt = " {}",),
+                    fmt = " {}",
+                ),
 
                 widget.Sep(**sep()),
 
                 widget.Clock(
-                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
-                    format="%a, %y %b %d"),
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/misc/timescript.sh")},
+                    format="%a, %y %b %d",
+                ),
 
                 widget.Sep(**sep()),
 
                 widget.Clock(
-                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
-                    format="%H:%M"),
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/misc/timescript.sh")},
+                    format="%H:%M",
+                ),
 
                 widget.Sep(**sep()),
 
                 widget.Wttr(
                     format = '%c%t (%f)', #%l:
                     # update_interval = 1200,
-                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/qtile/scripts/misc/timescript.sh")},
-                    location = {"Hanoi":"Hanoi"},),
+                    mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + " -e " + home + "/.config/misc/timescript.sh")},
+                    location = {"Hanoi":"Hanoi"},
+                ),
 
-                widget.Sep(**sep()),
+                # widget.Sep(**sep()),
+
+                # widget.Systray(
+                #     icon_size=30,
+                # ),
+
+                # widget.Sep(**sep()),
+
+                # widget.Image(
+                #     margin = 3,
+                #     filename = '~/.config/qtile/icons/power2.png',
+                #     mouse_callbacks = {'Button1': lazy.spawn('/home/hp/.config/misc/dm-logout.sh')},
+                # ),
+
+        ]
+    return widgets_list
+
+def init_widgets_list_vert():
+    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+    widgets_list = [
+                # widget.Cmus(),
+
+
+                widget.Spacer(),
 
                 widget.Systray(
-                    icon_size=30,),
+                    icon_size=30,
+                ),
 
                 widget.Sep(**sep()),
 
                 widget.Image(
                     margin = 3,
                     filename = '~/.config/qtile/icons/power2.png',
-                    mouse_callbacks = {'Button1': lazy.spawn('/home/hp/.config/qtile/scripts/misc/dm-logout.sh')},),
+                    mouse_callbacks = {'Button1': lazy.spawn('/home/hp/.config/misc/dm-logout.sh')},
+                ),
+
 
         ]
     return widgets_list
@@ -401,8 +442,8 @@ widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=40, opacity=0.85, background="000000"))]
-                # left=bar.Bar(widgets=init_widgets_screen2(), size=44, opacity=0.85, background= "000000"))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_list(), size=40, opacity=0.85, background="000000"),
+                left=bar.Bar(widgets=init_widgets_list_vert(), size=40, opacity=0.85, background= "000000"))]
 
 screens = init_screens()
 
@@ -504,6 +545,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='cairo-dock'),
     Match(title='Save File'),
     Match(wm_class='qutebrowser'),
+    Match(wm_class='calc'),
     # Match(wm_class='caffeine'),
 
 ], fullscreen_border_width = 0, border_width = 0)

@@ -184,6 +184,7 @@
 /home/hp/Music/WalkOnWater-EminemBeyonce-5345197.mp3
 /home/hp/Music/SauTatCa-ERIKST319-4301357.mp3
 /home/hp/Music/FLACs/Bring Me To Life - Evanescence.flac
+/home/hp/Music/FLACs/Where_d You Go - Fort Minor.flac
 /home/hp/Music/Whered You Go - Fort Minor [NCT 33634236251626562500].mp3
 /home/hp/Music/MyWay-FrankSinatra-3042173.mp3
 /home/hp/Music/FLACs/Sweet Child O_ Mine - Guns N_ Roses.flac
@@ -229,8 +230,10 @@
 /home/hp/Music/FLACs/Silent Night - Pentatonix.flac
 /home/hp/Music/TheSoundofSilence-Pentatonix-5890076.mp3
 /home/hp/Music/FLACs/Fearless - Pink Floyd.flac
-/home/hp/Music/FLACs/Time - Pink Floyd.flac
 /home/hp/Music/FLACs/Comfortably Numb - Pink Floyd.flac
+/home/hp/Music/FLACs/The Dark Side Of The Moon - Pink Floyd.flac
+/home/hp/Music/FLACs/04. Time.flac
+/home/hp/Music/FLACs/06. Money.flac
 /home/hp/Music/Back In Time Extended Version - Pitbull (NhacPro.net).mp3
 /home/hp/Music/PostmodernJukebox/Creep - Postmodern Jukebox.mp3
 /home/hp/Music/PostmodernJukebox/Seven Nation Army - Postmodern jukebox.mp3
@@ -264,11 +267,27 @@
 /home/hp/Music/35. The Show Must Go On.mp3
 /home/hp/Music/UnderPressure-QueenDavidBowie-4704785.mp3
 /home/hp/Music/AlwaysSomewhere-Scorpions_tc8.mp3
+/home/hp/Music/FLACs/08 - No Diggity (feat. Ariana Savalas).flac
+/home/hp/Music/FLACs/11 - All About That Bass (feat. Kate Davis).flac
+/home/hp/Music/FLACs/05 - Royals.flac
+/home/hp/Music/FLACs/03 Bad Romance (feat. Ariana Savalas & Sarah Reich).flac
+/home/hp/Music/FLACs/05 Creep (feat. Haley Reinhart).flac
+/home/hp/Music/FLACs/11 Take Me To Church (feat. Morgan James).flac
+/home/hp/Music/FLACs/04 Habits (feat. Haley Reinhart).flac
+/home/hp/Music/FLACs/08 Seven Nation Army (Feat Haley Reinhart).flac
+/home/hp/Music/FLACs/10 Boulevard Of Brokeen Dreams (Feat Maiya Sykes).flac
+/home/hp/Music/FLACs/14 - Mad World.flac
+/home/hp/Music/FLACs/02 - Toxic.flac
+/home/hp/Music/FLACs/12 - Stressed Out.flac
+/home/hp/Music/FLACs/02 - Don't Stop Me Now (Feat. Melinda Doolittle).flac
+/home/hp/Music/FLACs/13 - Nothing Else Matters (feat. Caroline Baran).flac
 /home/hp/Music/Coming Home Pt II - Skylar Grey.mp3
 /home/hp/Music/DiDeTroVe-SoobinHoangSon-4726882.mp3
 /home/hp/Music/WhereDoWeGo-ThanhBui-TataYoung_3xgkd_hq.mp3
 /home/hp/Music/LetItBe-TheBeatles-37394.mp3
+/home/hp/Music/FLACs/Let It Be - The Beatles.flac
 /home/hp/Music/FLACs/Hotel California LIVE_ - The Eagles.flac
+/home/hp/Music/FLACs/Seven Nation Army - The White Stripes.flac
 /home/hp/Music/FLACs/minh yeu nhau yeu nhau binh yen thoi - T.flac
 /home/hp/Music/Linh Hồn Vẫn Tồn Tại-UnlimiteD.mp3
 /home/hp/Music/TaKillYaBabyDriverMix-VinnieManiscalco-5413629.mp3

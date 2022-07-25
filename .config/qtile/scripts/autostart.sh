@@ -7,7 +7,7 @@ function run {
   fi
 }
 
-
+# tint2 &
 
 #starting utility applications at boot time
 xautolock -time 10 -locker 'slock' -detectsleep -killtime 12 -killer "systemctl suspend" &

@@ -7,6 +7,9 @@
 # QT_QPA_PLATFORMTHEME=qt5ct
 # BROWSER=firefox
 
+XDG_CURRENT_DESKTOP=Unity
+QT_QPA_PLATFORMTHEME=gtk2
+
 export TUIR_BROWSER=qutebrowser
 
 export QT_IM_MODULE=fcitx5

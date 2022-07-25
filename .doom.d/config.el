@@ -162,10 +162,10 @@
 #+PERMALINK:
 #+CATEGORY:
 #+TAGS:
-#+TOC: headlines 1
 #+TITLE:
 #+DESCRIPTION:
-#+AUTHOR: Hp")
+#+AUTHOR: Hp
+#+TOC: headlines 1")
 (map! :leader
       :prefix "i"
       :desc "Fill blog tags" "b" 'autofill-blog-tags)

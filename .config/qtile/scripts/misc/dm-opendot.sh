@@ -4,6 +4,7 @@
 
 # List config files path
 declare -a options=(
+    "This file - ~/.config/qtile/scripts/misc/dm-opendot.sh"
     "Qtile config.py - ~/.config/qtile/config.py"
     "Emacs config.el - ~/.doom.d/config.el"
     "Emacs init.el - ~/.doom.d/config.el"
@@ -17,6 +18,7 @@ declare -a options=(
     "Environment - /etc/environment"
     "Tmux - ~/.tmux.conf"
     "Picom - ~/.config/picom/picom.conf"
+    "Tint2 - ~/.config/tint2/tint2rc"
 )
 
 # add number count
